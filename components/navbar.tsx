@@ -10,7 +10,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
       <div className="flex justify-between items-center">
         <Link 
           href="/" 
-          className="text-base hover:underline underline-offset-4 transition-all duration-200"
+          className="text-lg hover:underline underline-offset-4 transition-all duration-200"
           style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
         >
           anushka
@@ -18,7 +18,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         <div className="flex gap-8">
           <Link 
             href="/projects" 
-            className={`text-base transition-all duration-200 ${
+            className={`text-lg transition-all duration-200 ${
               currentPage === 'projects' 
                 ? 'underline underline-offset-4' 
                 : 'hover:underline underline-offset-4'
@@ -29,7 +29,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
           </Link>
           <Link 
             href="/bookshelf" 
-            className={`text-base transition-all duration-200 ${
+            className={`text-lg transition-all duration-200 ${
               currentPage === 'bookshelf' 
                 ? 'underline underline-offset-4' 
                 : 'hover:underline underline-offset-4'
@@ -40,7 +40,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
           </Link>
           <Link 
             href="/rabbit-holes" 
-            className={`text-base transition-all duration-200 ${
+            className={`text-lg transition-all duration-200 ${
               currentPage === 'rabbit-holes' 
                 ? 'underline underline-offset-4' 
                 : 'hover:underline underline-offset-4'
