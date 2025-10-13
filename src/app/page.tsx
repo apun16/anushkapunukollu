@@ -1,44 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 export default function Home() {
   return (
     <div className="font-sans min-h-screen p-6 pb-12 sm:p-12">
-      {/* Navbar */}
-      <nav className="max-w-4xl w-full mx-auto mb-8">
-        <div className="flex justify-between items-center">
-          <Link 
-            href="/" 
-            className="text-base hover:underline underline-offset-4 transition-all duration-200"
-            style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
-          >
-            anushka
-          </Link>
-          <div className="flex gap-8">
-            <Link 
-              href="/projects" 
-              className="text-base hover:underline underline-offset-4 transition-all duration-200"
-              style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
-            >
-              projects
-            </Link>
-            <Link 
-              href="/bookshelf" 
-              className="text-base hover:underline underline-offset-4 transition-all duration-200"
-              style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
-            >
-              bookshelf
-            </Link>
-            <Link 
-              href="/rabbit-holes" 
-              className="text-base hover:underline underline-offset-4 transition-all duration-200"
-              style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
-            >
-              rabbit holes
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="flex flex-col gap-6 items-center sm:items-start max-w-4xl w-full mx-auto">
 
@@ -232,72 +199,7 @@ export default function Home() {
           <hr className="border-gray-300" />
         </div>
 
-        <footer className="w-full flex flex-col items-center gap-4 mt-4">
-          <div className="flex gap-[24px] flex-wrap items-center justify-center">
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4 transition-all duration-200"
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/file.svg"
-                alt="File icon"
-                width={16}
-                height={16}
-              />
-              Resume
-            </a>
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4 transition-all duration-200"
-              href="https://github.com/apun16/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/file.svg"
-                alt="File icon"
-                width={16}
-                height={16}
-              />
-              Github
-            </a>
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4 transition-all duration-200"
-              href="https://www.linkedin.com/in/apunukollu/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/window.svg"
-                alt="Window icon"
-                width={16}
-                height={16}
-              />
-              LinkedIn
-            </a>
-            <a
-              className="flex items-center gap-2 hover:underline hover:underline-offset-4 transition-all duration-200"
-              href="mailto:anushka.punukollu@uwaterloo.ca"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/globe.svg"
-                alt="Globe icon"
-                width={16}
-                height={16}
-              />
-              Email
-            </a>
-          </div>
-          <p className="text-sm text-gray-600" style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}>
-            © 2025 Anushka Punukollu
-          </p>
-        </footer>
+        <Footer />
       </main>
     </div>
   );
