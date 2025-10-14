@@ -21,7 +21,7 @@ const sampleProjects: Project[] = [
     id: 1,
     title: "SucroSoil",
     description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
-    languages: ["Material Science", "Python", "Hydrogels", "Experimentation"],
+    languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
     imageSrc: "/SucroSoil_Thumbnail.png",
     liveUrl: "https://devpost.com/software/sucrosoil"
   },
