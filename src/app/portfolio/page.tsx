@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
 import ProjectTab from "../../../components/ProjectTab";
@@ -19,16 +20,16 @@ const sampleProjects: Project[] = [
   {
     id: 1,
     title: "SucroSoil",
-    description: "Transforming agriculture sustainably with biodegradable sugarcane hydrogels, rich in nutrients and eco-friendly. A solution for soil degradation using waste products from sugar production.",
-    languages: ["Material Science", "Nanotechnology", "Hydrogels", "Sustainability"],
+    description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
+    languages: ["Material Science", "Python", "Hydrogels", "Experimentation"],
     imageSrc: "/SucroSoil_Thumbnail.png",
     liveUrl: "https://devpost.com/software/sucrosoil"
   },
   {
     id: 2,
     title: "FakeSeek",
-    description: "A deepfake detection tool that helps users spot AI-generated content before it spreads. Built for TechNova 2025 hackathon to combat misinformation and protect digital authenticity.",
-    languages: ["TypeScript", "Python", "AI/ML", "Next.js"],
+    description: "A deepfake detection tool that helps users spot AI-generated content before it spreads and find if their identity has been compromised. Built in 36 hours for TechNova 2025 & won 3rd overall.",
+    languages: ["TypeScript", "Python", "GeminiAPI", "React", "MongoDB", "TailwindCSS"],
     imageSrc: "/fakeseek_logo.png",
     githubUrl: "https://github.com/apun16/FakeSeek.",
     liveUrl: "https://devpost.com/software/fakeseek"
@@ -36,8 +37,8 @@ const sampleProjects: Project[] = [
   {
     id: 3,
     title: "SeaBloom",
-    description: "An innovative marine conservation platform that combines technology with ocean health monitoring. Features real-time data analysis and community engagement for protecting marine ecosystems.",
-    languages: ["React", "Python", "Data Science", "Marine Biology"],
+    description: "SeaBloom is a coral reef monitoring system that uses convolutional neural networks to classify bleached vs unbleached coral from images with 98% accuracy. The model utilizes PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to enhance training on a dataset of coral images collected from multiple sources.",
+    languages: ["Python", "PyTorch", "Computer Vision"],
     imageSrc: "/SeaBloom.png",
     githubUrl: "https://github.com/apun16/SeaBloom",
     liveUrl: "https://medium.com/@anushkapun/seabloom-fab26eec2aea"
@@ -45,8 +46,8 @@ const sampleProjects: Project[] = [
   {
     id: 4,
     title: "Flux",
-    description: "A dynamic productivity and workflow management application designed to streamline daily tasks and enhance team collaboration. Built for the Moonshot Pirates competition.",
-    languages: ["JavaScript", "React", "Productivity", "UI/UX"],
+    description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions.",
+    languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
     imageSrc: "/Flux.png",
     liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
   }
@@ -131,7 +132,7 @@ export default function Projects() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
               <div className="flex items-center gap-3 mb-3">
-                <img src="/Aview_logo.jpeg" alt="Aview International" className="w-8 h-8 rounded" />
+                <Image src="/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -140,17 +141,23 @@ export default function Projects() {
                 Aview International
               </p>
               <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Built tools for multilingual content distribution for creators. Developed software solutions to help content reach global audiences.
+                Built video distribution tools serving 300+ media creators, optimized pipelines to increase throughput by 30%, and automated content publishing, saving over 50 hours per month on post-processing.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Software Engineering
+                  NestJS
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Multilingual Content
+                  TypeScript
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Content Distribution
+                  JavaScript
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  MongoDB
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Full Stack Development
                 </span>
               </div>
               <a 
@@ -169,7 +176,7 @@ export default function Projects() {
 
             <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
               <div className="flex items-center gap-3 mb-3">
-                <img src="/Nokia_logo.jpeg" alt="Nokia" className="w-8 h-8 rounded" />
+                <Image src="/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -178,17 +185,26 @@ export default function Projects() {
                 Nokia
               </p>
               <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Worked on the Network Service Platform's Analytics team, developing future technologies for telecommunications infrastructure.
+                Worked on the Network Service Platform&apos;s Analytics team (Future Tech Program), migrating 10,000+ lines of legacy front-end code across 120+ files to improve load times and reduce bug reports.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Network Analytics
+                  TypeScript
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Telecommunications
+                  JavaScript
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Future Tech
+                  React
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  State Management
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Jira
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Confluence
                 </span>
               </div>
               <a 
@@ -207,26 +223,31 @@ export default function Projects() {
 
             <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
               <div className="flex items-center gap-3 mb-3">
-                <img src="/fuse_logo.jpeg" alt="FUSE Society" className="w-8 h-8 rounded" />
+                <Image src="/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                  Prev. CEO, Board Member
+                  CEO, Board Member
                 </h3>
               </div>
               <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                 FUSE Society
               </p>
               <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Led a national financial literacy non-profit, reaching thousands of high school students and partnering with major organizations.
-              </p>
+                Led a national financial literacy non-profit, reaching 6,000+ students by teaching a case-based business curriculum across 50 schools and hosting competitions in partnership with TD, Binance, and other organizations.              </p>
               <div className="flex flex-wrap gap-2 mb-3">
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Leadership
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Financial Literacy
+                  KPI Tracking
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Non-profit
+                  Fundraising
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Non-Profit Strategy
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Project Management
                 </span>
               </div>
               <a 
@@ -245,26 +266,29 @@ export default function Projects() {
 
             <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
               <div className="flex items-center gap-3 mb-3">
-                <img src="/TargetAlpha_logo.jpeg" alt="Target Alpha" className="w-8 h-8 rounded" />
+                <Image src="/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Chief Financial Officer
                 </h3>
               </div>
               <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Target Alpha
+                Target Alpha Canada
               </p>
               <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Co-founded a national financial literacy organization, creating educational programs and building partnerships with major institutions.
+                Served as CFO, managing over $10K in funding and building partnerships with sponsors, including the University of Toronto and CPA Ontario; recognized by the Government of Ontario.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Entrepreneurship
+                  Financial Planning
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Education
+                  Microsoft Excel
                 </span>
                 <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Partnerships
+                  Pitching
+                </span>
+                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Sponsorships
                 </span>
               </div>
               <a 
@@ -331,113 +355,59 @@ export default function Projects() {
             <span className="text-[#00674F] font-bold">recognition</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- 
-             <div className="bg-gradient-to-br from-[#D4E0F0] to-[#7CB8C0] rounded-lg border border-[#543787] p-6 hover:shadow-lg transition-all duration-200">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#543787] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-[#543787]" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                  Ted Rogers Future Leader Scholar
-                </h3>
-              </div>
-              <p className="text-sm text-gray-700 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                University of Waterloo
-              </p>
-              <p className="text-sm leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Prestigious scholarship recognizing exceptional leadership potential and academic excellence in computer science.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-[#FEB737] to-[#D4E0F0] rounded-lg border border-[#543787] p-6 hover:shadow-lg transition-all duration-200">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#543787] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-[#543787]" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                  $30k+ in Funding
-                </h3>
-              </div>
-              <p className="text-sm text-gray-700 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                SucroSoil Project
-              </p>
-              <p className="text-sm leading-relaxed text-gray-800 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Secured funding from Emergent Ventures, 1517 Fund, and Rideau Hall Foundation for sustainable agriculture innovation.
-              </p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Emergent Ventures
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  1517 Fund
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Rideau Hall
-                </span>
+            <div className="bg-gradient-to-br from-[#D4E0F0]/60 to-[#7CB8C0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+                Loran Scholar Finalist
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  1 of 90 finalists out of 6,000+ applicants
+                </p>
+                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Recognized for demonstrated commitment to <span className="font-semibold">character, service, and leadership</span>
+                </p>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#7CB8C0] to-[#D4E0F0] rounded-lg border border-[#543787] p-6 hover:shadow-lg transition-all duration-200">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#543787] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-[#543787]" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                  10,000+ Students Reached
-                </h3>
-              </div>
-              <p className="text-sm text-gray-700 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Financial Literacy Impact
-              </p>
-              <p className="text-sm leading-relaxed text-gray-800 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Through FUSE Society and Target Alpha programs, created educational content and workshops reaching thousands of high school students nationwide.
-              </p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  FUSE Society
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Target Alpha
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  National Reach
-                </span>
+            <div className="bg-gradient-to-br from-[#FEB737]/60 to-[#D4E0F0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+                BMO200 William A. Downe Scholar
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Awarded $10,000 in recognition of exceptional performance
+                </p>
+                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Excellence in <span className="font-semibold">academic achievement, leadership, and community contributions</span>
+                </p>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#D4E0F0] to-[#FEB737] rounded-lg border border-[#543787] p-6 hover:shadow-lg transition-all duration-200">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-[#543787] rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-[#543787]" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                  Major Partnerships
-                </h3>
+            <div className="bg-gradient-to-br from-[#7CB8C0]/60 to-[#D4E0F0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+                EGOI Canadian National Training Camp Qualifier
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Top 10 female competitive programmers out of 10,000+ participants
+                </p>
+                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Invitational camp based on <span className="font-semibold">Canadian Computing Contest scores</span>
+                </p>
               </div>
-              <p className="text-sm text-gray-700 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Strategic Collaborations
-              </p>
-              <p className="text-sm leading-relaxed text-gray-800 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                Established partnerships with leading organizations including TD Bank, Binance, and University of Toronto to expand program reach and impact.
-              </p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  TD Bank
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Binance
-                </span>
-                <span className="px-2 py-1 bg-[#543787] text-white rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  U of T
-                </span>
+            </div>
+
+            <div className="bg-gradient-to-br from-[#D4E0F0]/60 to-[#FEB737]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+                DECA ICDC - 7th Place Internationally
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  Placed 7th internationally out of 10,000+ total competitors
+                </p>
+                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  <span className="font-semibold">Business Finance Series</span> event
+                </p>
               </div>
             </div>
           </div>
