@@ -10,44 +10,37 @@ export default function Navbar({ currentPage }: NavbarProps) {
       <div className="flex justify-between items-center">
         <Link 
           href="/" 
-          className="text-lg hover:underline underline-offset-4 transition-all duration-200"
+          className={`text-xl transition-all duration-200 ${
+            currentPage === 'home' || currentPage === undefined
+              ? 'underline underline-offset-4 text-[#543787]' 
+              : 'hover:underline underline-offset-4 text-[#543787] hover:text-[#D4E0F0]'
+          }`}
           style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
         >
           anushka
         </Link>
-        <div className="flex gap-8">
+        <div className="flex gap-10">
           <Link 
-            href="/projects" 
-            className={`text-lg transition-all duration-200 ${
-              currentPage === 'projects' 
-                ? 'underline underline-offset-4' 
-                : 'hover:underline underline-offset-4'
+            href="/portfolio" 
+            className={`text-xl transition-all duration-200 ${
+              currentPage === 'portfolio' 
+                ? 'underline underline-offset-4 text-[#543787]' 
+                : 'hover:underline underline-offset-4 text-black hover:text-[#D4E0F0]'
             }`}
             style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
           >
-            projects
+            portfolio
           </Link>
           <Link 
             href="/bookshelf" 
-            className={`text-lg transition-all duration-200 ${
+            className={`text-xl transition-all duration-200 ${
               currentPage === 'bookshelf' 
-                ? 'underline underline-offset-4' 
-                : 'hover:underline underline-offset-4'
+                ? 'underline underline-offset-4 text-[#543787]' 
+                : 'hover:underline underline-offset-4 text-black hover:text-[#D4E0F0]'
             }`}
             style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
           >
             bookshelf
-          </Link>
-          <Link 
-            href="/rabbit-holes" 
-            className={`text-lg transition-all duration-200 ${
-              currentPage === 'rabbit-holes' 
-                ? 'underline underline-offset-4' 
-                : 'hover:underline underline-offset-4'
-            }`}
-            style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
-          >
-            rabbit holes
           </Link>
         </div>
       </div>

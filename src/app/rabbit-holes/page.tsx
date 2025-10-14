@@ -13,13 +13,13 @@ export default function RabbitHoles() {
           </h1>
           <p
             className="text-lg mt-2"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            style={{ fontFamily: 'Sora, sans-serif' }}
           >
             work in progress :)
           </p>
           <div
             className="mt-4"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            style={{ fontFamily: 'Sora, sans-serif' }}
             >
           <p className="mb-2 font-semibold">current topics I&apos;m interested in 📜</p>
           <ul className="list-disc list-inside space-y-1">

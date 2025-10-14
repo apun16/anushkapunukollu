@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --background: #eeeaea;
-  --foreground: #171717;
+  --background: #ffffff;
+  --foreground: #000000;
+  --purple-periwinkle: #543787;
+  --sea-blue: #7CB8C0;
+  --yellow-honey: #FEB737;
+  --blue-columbia: #D4E0F0;
+  --green: #00674F;
 }
 
 @theme inline {
@@ -24,7 +30,7 @@ body {
 }
 
 ::-moz-selection {
-  background-color: #e5e7eb;
+  background-color: #f0f0f0;
   color: #111827;
 }
 

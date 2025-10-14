@@ -66,60 +66,57 @@ export default function Bookshelf() {
   const getTagColor = (tag: string) => {
     const colors = {
       // Genres
-      'Non-fiction': 'bg-slate-100 text-slate-700 border border-slate-200',
-      'History': 'bg-emerald-100 text-emerald-800 border border-emerald-200',
-      'Business': 'bg-amber-100 text-amber-800 border border-amber-200',
-      'Self-help': 'bg-violet-100 text-violet-800 border border-violet-200',
-      'Psychology': 'bg-rose-100 text-rose-800 border border-rose-200',
-      'Anthropology': 'bg-orange-100 text-orange-800 border border-orange-200',
-      'Entrepreneurship': 'bg-purple-100 text-purple-800 border border-purple-200',
-      'Cognitive Science': 'bg-indigo-100 text-indigo-800 border border-indigo-200',
+      'Non-fiction': 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]',
+      'History': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
+      'Business': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
+      'Self-help': 'bg-[#543787] text-white border border-[#543787]',
+      'Psychology': 'bg-[#00674F] text-white border border-[#00674F]',
+      'Anthropology': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
+      'Entrepreneurship': 'bg-[#543787] text-white border border-[#543787]',
+      'Cognitive Science': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
       
       // Topics
-      'Human Evolution': 'bg-slate-100 text-slate-700 border border-slate-200',
-      'Society': 'bg-emerald-100 text-emerald-800 border border-emerald-200',
-      'Culture': 'bg-amber-100 text-amber-800 border border-amber-200',
-      'Startups': 'bg-violet-100 text-violet-800 border border-violet-200',
-      'Innovation': 'bg-rose-100 text-rose-800 border border-rose-200',
-      'Product Development': 'bg-indigo-100 text-indigo-800 border border-indigo-200',
-      'Decision Making': 'bg-yellow-100 text-yellow-800 border border-yellow-200',
-      'Bias': 'bg-red-100 text-red-800 border border-red-200',
-      'Rationality': 'bg-cyan-100 text-cyan-800 border border-cyan-200',
-      'Sociology': 'bg-emerald-100 text-emerald-800 border border-emerald-200',
-      'Cognitive Biases': 'bg-red-100 text-red-800 border border-red-200',
-      'Behavioral Economics': 'bg-cyan-100 text-cyan-800 border border-cyan-200'
+      'Human Evolution': 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]',
+      'Society': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
+      'Culture': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
+      'Startups': 'bg-[#543787] text-white border border-[#543787]',
+      'Innovation': 'bg-[#00674F] text-white border border-[#00674F]',
+      'Product Development': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
+      'Decision Making': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
+      'Bias': 'bg-[#543787] text-white border border-[#543787]',
+      'Rationality': 'bg-[#00674F] text-white border border-[#00674F]',
+      'Sociology': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
+      'Cognitive Biases': 'bg-[#543787] text-white border border-[#543787]',
+      'Behavioral Economics': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]'
     };
     
-    return colors[tag as keyof typeof colors] || 'bg-gray-100 text-gray-700 border border-gray-200';
+    return colors[tag as keyof typeof colors] || 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]';
   };
 
   return (
-    <div className="font-sans min-h-screen p-6 pb-12 sm:p-12">
-      <Navbar currentPage="bookshelf" />
-      
-      <main className="flex flex-col gap-6 items-center sm:items-start max-w-4xl w-full mx-auto">
-        <div className="w-full">
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            collection of writings
+    <div className="min-h-screen bg-white">
+      <main className="max-w-3xl mx-auto px-6 py-8">
+        <Navbar currentPage="bookshelf" />
+        
+        <div className="mb-8">
+          <h1 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
+            <span className="text-[#00674F] font-bold">bookshelf</span>
           </h1>
-        </div>
-
-        <div className="w-full">
-          <p className="text-base leading-relaxed mb-6" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
+          <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
             For a long time I&apos;ve been keeping a ledger of every book I&apos;ve owned & read along with a short reflection on it. I think this quote best describes why I love to read:
           </p>
           
-          <blockquote className="border-l-4 border-gray-300 pl-6 py-4 bg-gray-50 rounded-r-lg italic text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
+          <blockquote className="border-l-4 border-[#543787] pl-6 py-4 bg-gray-50 rounded-r-lg italic text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
             &quot;To read is to fly: it is to soar to a point of vantage which gives a view over wide terrains of history, human variety, ideas, shared experience and the fruits of many inquiries.&quot; - A.C. Grayling
           </blockquote>
         </div>
 
-        <div className="w-full">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <div className="mb-8">
+          <div className="bg-[#D4E0F0] border border-[#7CB8C0] rounded-none p-6">
             <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
               📮 Book Recommendations
             </h3>
-            <p className="text-sm text-gray-600 mb-4" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
+            <p className="text-sm text-gray-600 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
               Have a book you think I&apos;d love? Drop it in the mailbox below!
             </p>
             <form onSubmit={handleRecommendationSubmit} className="flex gap-2">
@@ -128,12 +125,12 @@ export default function Bookshelf() {
                 value={recommendation}
                 onChange={(e) => setRecommendation(e.target.value)}
                 placeholder="Book title and author..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FEB737]"
+                style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-[#543787] text-white rounded-none hover:bg-[#FEB737] transition-colors"
                 style={{ fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' }}
               >
                 Send
@@ -142,56 +139,51 @@ export default function Bookshelf() {
           </div>
         </div>
 
-        <div className="w-full">
-          <hr className="border-gray-300" />
-        </div>
-
-          <div className="w-full">
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-              <div className="grid grid-cols-12 gap-4 p-4 bg-gray-50 border-b border-gray-200 font-bold text-sm" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-                <div className="col-span-4">Title</div>
-                <div className="col-span-3">Genre</div>
-                <div className="col-span-3">Topics</div>
-                <div className="col-span-2">Rating</div>
-              </div>
-              
-               {sampleBooks.map((book) => (
-                 <div
-                   key={book.id}
-                   className="grid grid-cols-12 gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors items-start"
-                 >
-                  <div className="col-span-4 font-medium" style={{ fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' }}>
-                    {book.title}
-                  </div>
-                   <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
-                     {book.genres.map((genre, index) => (
-                       <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(genre)}`}>
-                         {genre}
-                       </span>
-                     ))}
-                   </div>
-                   <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
-                     {book.topics.map((topic, index) => (
-                       <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(topic)}`}>
-                         {topic}
-                       </span>
-                     ))}
-                   </div>
-                  <div className="col-span-2 text-yellow-500 flex items-center" style={{ fontFamily: 'Space Grotesk, system-ui, sans-serif' }}>
-                    {renderStars(book.rating)}
-                  </div>
-                </div>
-              ))}
+        <div className="mb-8">
+          <div className="bg-white border border-gray-200 overflow-hidden">
+            <div className="grid grid-cols-12 gap-4 p-4 bg-gray-50 border-b border-gray-200 font-bold text-sm" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+              <div className="col-span-4">Title</div>
+              <div className="col-span-3">Genre</div>
+              <div className="col-span-3">Topics</div>
+              <div className="col-span-2">Rating</div>
             </div>
+            
+            {sampleBooks.map((book) => (
+              <div
+                key={book.id}
+                className="grid grid-cols-12 gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors items-start"
+              >
+                <div className="col-span-4 font-medium" style={{ fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' }}>
+                  {book.title}
+                </div>
+                <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  {book.genres.map((genre, index) => (
+                    <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(genre)}`}>
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+                <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  {book.topics.map((topic, index) => (
+                    <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(topic)}`}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+                <div className="col-span-2 text-yellow-500 flex items-center" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                  {renderStars(book.rating)}
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-        <div className="w-full">
+        <div className="w-full mb-8">
           <hr className="border-gray-300" />
         </div>
 
-         <Footer />
-       </main>
-
+        <Footer />
+      </main>
     </div>
   );
 }
