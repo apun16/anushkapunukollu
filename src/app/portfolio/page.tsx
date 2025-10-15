@@ -54,11 +54,11 @@ const sampleProjects: Project[] = [
 ];
 
 const skillsData = {
+  'All': ['Python', 'JavaScript', 'TypeScript', 'Java', 'Swift', 'HTML', 'CSS', 'React', 'Next.js', 'Node.js', 'NestJS', 'Express.js', 'MongoDB', 'PostgreSQL', 'Flask', 'Git', 'Docker', 'AWS', 'Figma', 'MS Excel'],
   'Languages': ['Python', 'JavaScript', 'TypeScript', 'Java', 'Swift', 'HTML', 'CSS'],
-  'Frontend': ['React', 'Next.js', 'HTML', 'JavaScript', 'TypeScript', 'SwiftUI', 'CSS'],
-  'Backend': ['Node.js', 'NestJS', 'Express.js', 'Python', 'Java', 'MongoDB', 'PostgreSQL', 'Flask',],
-  'Tools': ['Git', 'Docker', 'AWS', 'Figma'],
-  'Other': ['MS Excel']
+  'Frontend': ['React', 'Next.js', 'TypeScript', 'JavaScript', 'SwiftUI', 'HTML', 'CSS'],
+  'Backend': ['Python', 'Java', 'Node.js', 'NestJS', 'Express.js', 'MongoDB', 'PostgreSQL', 'Flask'],
+  'Tools': ['Git', 'Docker', 'AWS', 'Figma', 'MS Excel']
 };
 
 export default function Projects() {
@@ -72,9 +72,6 @@ export default function Projects() {
   );
 
   const getFilteredSkills = () => {
-    if (selectedCategory === 'All') {
-      return Object.values(skillsData).flat();
-    }
     return skillsData[selectedCategory as keyof typeof skillsData] || [];
   };
 
