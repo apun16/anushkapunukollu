@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from "react";
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 interface Book {
   id: number;
@@ -64,59 +64,60 @@ export default function Bookshelf() {
   };
 
   const getTagColor = (tag: string) => {
-    const colors = {
-      // Genres
-      'Non-fiction': 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]',
-      'History': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
-      'Business': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
-      'Self-help': 'bg-[#543787] text-white border border-[#543787]',
-      'Psychology': 'bg-[#00674F] text-white border border-[#00674F]',
-      'Anthropology': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
-      'Entrepreneurship': 'bg-[#543787] text-white border border-[#543787]',
-      'Cognitive Science': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
+    const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+      // Genres - using light colors
+      'Non-fiction': { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' },
+      'History': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+      'Business': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
+      'Self-help': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Psychology': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
+      'Anthropology': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+      'Entrepreneurship': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Cognitive Science': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
       
       // Topics
-      'Human Evolution': 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]',
-      'Society': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
-      'Culture': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
-      'Startups': 'bg-[#543787] text-white border border-[#543787]',
-      'Innovation': 'bg-[#00674F] text-white border border-[#00674F]',
-      'Product Development': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]',
-      'Decision Making': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
-      'Bias': 'bg-[#543787] text-white border border-[#543787]',
-      'Rationality': 'bg-[#00674F] text-white border border-[#00674F]',
-      'Sociology': 'bg-[#FEB737] text-[#543787] border border-[#FEB737]',
-      'Cognitive Biases': 'bg-[#543787] text-white border border-[#543787]',
-      'Behavioral Economics': 'bg-[#7CB8C0] text-white border border-[#7CB8C0]'
+      'Human Evolution': { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' },
+      'Society': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+      'Culture': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
+      'Startups': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Innovation': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
+      'Product Development': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
+      'Decision Making': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+      'Bias': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Rationality': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
+      'Sociology': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+      'Cognitive Biases': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Behavioral Economics': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' }
     };
     
-    return colors[tag as keyof typeof colors] || 'bg-[#D4E0F0] text-[#543787] border border-[#7CB8C0]';
+    const defaultStyle = { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' };
+    return colorMap[tag] || defaultStyle;
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="bookshelf" />
         
         <div className="mb-8">
           <h1 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#00674F] font-bold">bookshelf</span>
+            <span className="text-[var(--color-dark)] font-bold">bookshelf</span>
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
             For a long time I&apos;ve been keeping a ledger of every book I&apos;ve owned & read along with a short reflection on it. I think this quote best describes why I love to read:
           </p>
           
-          <blockquote className="border-l-4 border-[#543787] pl-6 py-4 bg-gray-50 rounded-r-lg italic text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+          <blockquote className="border-l-4 pl-6 py-4 bg-gray-50 rounded-r-lg italic text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-primary)' }}>
             &quot;To read is to fly: it is to soar to a point of vantage which gives a view over wide terrains of history, human variety, ideas, shared experience and the fruits of many inquiries.&quot; - A.C. Grayling
           </blockquote>
         </div>
 
         <div className="mb-8">
-          <div className="bg-[#D4E0F0] border border-[#7CB8C0] rounded-none p-6">
-            <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+          <div className="rounded-none p-6" style={{ backgroundColor: 'var(--color-light)', borderColor: 'var(--color-secondary)', borderWidth: '1px', borderStyle: 'solid' }}>
+            <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: '#2d2d2d' }}>
               📮 Book Recommendations
             </h3>
-            <p className="text-sm text-gray-600 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+            <p className="text-sm mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: '#2d2d2d' }}>
               Have a book you think I&apos;d love? Drop it in the mailbox below!
             </p>
             <form onSubmit={handleRecommendationSubmit} className="flex gap-2">
@@ -125,13 +126,22 @@ export default function Bookshelf() {
                 value={recommendation}
                 onChange={(e) => setRecommendation(e.target.value)}
                 placeholder="Book title and author..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FEB737]"
-                style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 placeholder:text-[\#2d2d2d]" // tailwind class for placeholder
+                style={{ 
+                  fontFamily: 'Sora, system-ui, sans-serif',
+                  color: '#2d2d2d',
+                  '--tw-ring-color': 'var(--color-accent)'
+                } as React.CSSProperties}
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-[#543787] text-white rounded-none hover:bg-[#FEB737] transition-colors"
-                style={{ fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' }}
+                className="px-4 py-2 text-white rounded-none transition-colors"
+                style={{ 
+                  backgroundColor: 'var(--color-primary)',
+                  fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' 
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-accent)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
               >
                 Send
               </button>
@@ -140,7 +150,7 @@ export default function Bookshelf() {
         </div>
 
         <div className="mb-8">
-          <div className="bg-white border border-gray-200 overflow-hidden">
+          <div className="border border-gray-200 overflow-hidden" style={{ backgroundColor: 'var(--color-background-light, #ffffff)' }}>
             <div className="grid grid-cols-12 gap-4 p-4 bg-gray-50 border-b border-gray-200 font-bold text-sm" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
               <div className="col-span-4">Title</div>
               <div className="col-span-3">Genre</div>
@@ -157,18 +167,40 @@ export default function Bookshelf() {
                   {book.title}
                 </div>
                 <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  {book.genres.map((genre, index) => (
-                    <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(genre)}`}>
-                      {genre}
-                    </span>
-                  ))}
+                  {book.genres.map((genre, index) => {
+                    const tagStyle = getTagColor(genre);
+                    return (
+                      <span 
+                        key={index} 
+                        className="px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap border"
+                        style={{
+                          backgroundColor: tagStyle.bg,
+                          color: tagStyle.text,
+                          borderColor: tagStyle.border
+                        } as React.CSSProperties}
+                      >
+                        {genre}
+                      </span>
+                    );
+                  })}
                 </div>
                 <div className="col-span-3 text-sm flex flex-wrap gap-1" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  {book.topics.map((topic, index) => (
-                    <span key={index} className={`px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap ${getTagColor(topic)}`}>
-                      {topic}
-                    </span>
-                  ))}
+                  {book.topics.map((topic, index) => {
+                    const tagStyle = getTagColor(topic);
+                    return (
+                      <span 
+                        key={index} 
+                        className="px-2 py-1 rounded-md text-xs font-medium whitespace-nowrap border"
+                        style={{
+                          backgroundColor: tagStyle.bg,
+                          color: tagStyle.text,
+                          borderColor: tagStyle.border
+                        } as React.CSSProperties}
+                      >
+                        {topic}
+                      </span>
+                    );
+                  })}
                 </div>
                 <div className="col-span-2 text-yellow-500 flex items-center" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   {renderStars(book.rating)}

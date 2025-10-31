@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "../../satoshi.css";
+import { ThemeProvider } from "../utils/theme-context";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -24,10 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} antialiased bg-[#fafafa] text-neutral-900`}
-        style={{ fontFamily: satoshiFontFamily }}
+        className={`${spaceGrotesk.variable} antialiased`}
+        style={{ 
+          fontFamily: satoshiFontFamily,
+          backgroundColor: 'var(--color-background, #fafafa)',
+          color: 'var(--color-foreground, #000000)'
+        }}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

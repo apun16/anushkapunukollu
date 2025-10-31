@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
-import ProjectTab from "../../../components/ProjectTab";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
+import ProjectTab from "../../components/ProjectTab";
+import { useTheme } from "../../utils/theme-context";
 
 interface Project {
   id: number;
@@ -64,6 +65,7 @@ const skillsData = {
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const { colors } = useTheme();
 
   const filteredProjects = sampleProjects.filter(project =>
     project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -76,13 +78,13 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="portfolio" />
         
         <div className="mb-8">
           <h2 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#00674F] font-bold">projects</span>
+            <span className="text-[var(--color-dark)] font-bold">projects</span>
           </h2>
           
           <div className="mb-6">
@@ -92,11 +94,16 @@ export default function Projects() {
                 placeholder="Search languages, projects, etc..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#FEB737] focus:border-transparent"
-                style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
+                className="w-full px-4 py-3 pl-10 border rounded-none focus:outline-none focus:ring-2 focus:border-transparent"
+                style={{ 
+                  borderColor: 'var(--color-border)',
+                  backgroundColor: 'var(--color-background)',
+                  color: 'var(--color-foreground)',
+                  fontFamily: 'Sora, system-ui, sans-serif'
+                }}
               />
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style={{ color: 'var(--color-muted)' }}>
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
@@ -119,41 +126,47 @@ export default function Projects() {
         </div>
 
         <div className="w-full mb-8">
-          <hr className="border-gray-300" />
+          <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
 
         <div className="mb-8">
           <h2 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#00674F] font-bold">experience</span>
+            <span className="text-[var(--color-dark)] font-bold">experience</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
+            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+              backgroundColor: 'var(--color-background-light)', 
+              borderColor: 'var(--color-light)',
+              color: 'var(--color-foreground)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
                 <Image src="/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
               </div>
-              <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                 Aview International
               </p>
-              <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Built video distribution tools serving 300+ media creators, optimized pipelines to increase throughput by 30%, and automated content publishing, saving over 50 hours per month on post-processing.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   NestJS
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   MongoDB
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Full Stack Development
                 </span>
               </div>
@@ -161,7 +174,7 @@ export default function Projects() {
                 href="https://www.aviewint.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[#543787] hover:text-[#7CB8C0] transition-colors text-sm font-medium"
+                className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors text-sm font-medium"
                 style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
               >
                 Visit Website
@@ -171,36 +184,42 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
+            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+              backgroundColor: 'var(--color-background-light)', 
+              borderColor: 'var(--color-light)',
+              color: 'var(--color-foreground)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
                 <Image src="/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
               </div>
-              <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                 Nokia
               </p>
-              <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Worked on the Network Service Platform&apos;s Analytics team (Future Tech Program), migrating 10,000+ lines of legacy front-end code across 120+ files to improve load times and reduce bug reports.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   React
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   State Management
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Jira
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Confluence
                 </span>
               </div>
@@ -208,7 +227,7 @@ export default function Projects() {
                 href="https://www.nokia.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[#543787] hover:text-[#7CB8C0] transition-colors text-sm font-medium"
+                className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors text-sm font-medium"
                 style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
               >
                 Visit Website
@@ -218,32 +237,38 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
+            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+              backgroundColor: 'var(--color-background-light)', 
+              borderColor: 'var(--color-light)',
+              color: 'var(--color-foreground)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
                 <Image src="/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   CEO, Board Member
                 </h3>
               </div>
-              <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                 FUSE Society
               </p>
-              <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Led a national financial literacy non-profit, reaching 6,000+ students by teaching a case-based business curriculum across 50 schools and hosting competitions in partnership with TD, Binance, and other organizations.              </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Leadership
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   KPI Tracking
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Fundraising
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Non-Profit Strategy
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Project Management
                 </span>
               </div>
@@ -251,7 +276,7 @@ export default function Projects() {
                 href="http://fusesociety.ca/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[#543787] hover:text-[#7CB8C0] transition-colors text-sm font-medium"
+                className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors text-sm font-medium"
                 style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
               >
                 Visit Website
@@ -261,30 +286,36 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="bg-white rounded-lg border border-[#D4E0F0] p-6 hover:shadow-md hover:border-[#543787] transition-all duration-200">
+            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+              backgroundColor: 'var(--color-background-light)', 
+              borderColor: 'var(--color-light)',
+              color: 'var(--color-foreground)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
                 <Image src="/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Chief Financial Officer
                 </h3>
               </div>
-              <p className="text-sm text-gray-600 mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm mb-3" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                 Target Alpha Canada
               </p>
-              <p className="text-sm leading-relaxed text-gray-700 mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Served as CFO, managing over $10K in funding and building partnerships with sponsors, including the University of Toronto and CPA Ontario; recognized by the Government of Ontario.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Financial Planning
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Microsoft Excel
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Pitching
                 </span>
-                <span className="px-3 py-1 bg-[#D4E0F0] text-[#543787] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   Sponsorships
                 </span>
               </div>
@@ -292,7 +323,7 @@ export default function Projects() {
                 href="https://targetalpha.ca/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[#543787] hover:text-[#7CB8C0] transition-colors text-sm font-medium"
+                className="inline-flex items-center text-[var(--color-primary)] hover:text-[var(--color-secondary)] transition-colors text-sm font-medium"
                 style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
               >
                 Visit Website
@@ -310,7 +341,7 @@ export default function Projects() {
 
         <div className="mb-8">
           <h2 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#00674F] font-bold">skills & frameworks</span>
+            <span className="text-[var(--color-dark)] font-bold">skills & frameworks</span>
           </h2>
           
           <div className="flex flex-wrap gap-2 mb-6">
@@ -318,12 +349,12 @@ export default function Projects() {
               <button 
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? 'bg-[#543787] text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-                style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors`}
+                style={{
+                  backgroundColor: selectedCategory === category ? 'var(--color-primary)' : 'var(--color-light)',
+                  color: selectedCategory === category ? '#ffffff' : 'var(--color-primary)',
+                  fontFamily: 'Sora, system-ui, sans-serif'
+                }}
               >
                 {category}
               </button>
@@ -334,8 +365,8 @@ export default function Projects() {
             {getFilteredSkills().map((skill, index) => (
               <div 
                 key={index}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-center bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
-                style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
+                className="px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors"
+                style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)' }}
               >
                 {skill}
               </div>
@@ -344,65 +375,62 @@ export default function Projects() {
         </div>
 
         <div className="w-full mb-8">
-          <hr className="border-gray-300" />
+          <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
 
         <div className="mb-8">
           <h2 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#00674F] font-bold">recognition</span>
+            <span className="text-[var(--color-dark)] font-bold">recognition</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-[#D4E0F0]/60 to-[#7CB8C0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+            <div className="recognition-card n1 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 Loran Scholar Finalist
               </h3>
               <div className="space-y-2">
-                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                   1 of 90 finalists out of 6,000+ applicants
                 </p>
-                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   Recognized for demonstrated commitment to <span className="font-semibold">character, service, and leadership</span>
                 </p>
               </div>
             </div>
-
-            <div className="bg-gradient-to-br from-[#FEB737]/60 to-[#D4E0F0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+            <div className="recognition-card n2 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 BMO200 William A. Downe Scholar
               </h3>
               <div className="space-y-2">
-                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                   Awarded $10,000 in recognition of exceptional performance
                 </p>
-                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   Excellence in <span className="font-semibold">academic achievement, leadership, and community contributions</span>
                 </p>
               </div>
             </div>
-
-            <div className="bg-gradient-to-br from-[#7CB8C0]/60 to-[#D4E0F0]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+            <div className="recognition-card n3 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 EGOI Canadian National Training Camp Qualifier
               </h3>
               <div className="space-y-2">
-                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                   Top 10 female competitive programmers out of 10,000+ participants
                 </p>
-                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   Invitational camp based on <span className="font-semibold">Canadian Computing Contest scores</span>
                 </p>
               </div>
             </div>
-
-            <div className="bg-gradient-to-br from-[#D4E0F0]/60 to-[#FEB737]/60 rounded-lg border-2 border-[#543787] p-6 hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-[#543787] mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+            <div className="recognition-card n4 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 DECA ICDC - 7th Place Internationally
               </h3>
               <div className="space-y-2">
-                <p className="text-lg leading-relaxed text-gray-800" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                   Placed 7th internationally out of 10,000+ total competitors
                 </p>
-                <p className="text-sm leading-relaxed text-gray-700 italic" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   <span className="font-semibold">Business Finance Series</span> event
                 </p>
               </div>

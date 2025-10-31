@@ -9,6 +9,11 @@
   --yellow-honey: #FEB737;
   --blue-columbia: #D4E0F0;
   --green: #00674F;
+  --color-primary: #543787;
+  --color-secondary: #7CB8C0;
+  --color-accent: #FEB737;
+  --color-light: #D4E0F0;
+  --color-dark: #00674F;
 }
 
 @theme inline {
@@ -53,4 +58,21 @@ body {
 
 .highlight-reveal:hover::before {
   left: 0;
+}
+
+.recognition-card.n1 {
+  background: linear-gradient(to bottom right, var(--recog1-g1), var(--recog1-g2));
+  border-color: var(--recog-border);
+}
+.recognition-card.n2 {
+  background: linear-gradient(to bottom right, var(--recog2-g1), var(--recog2-g2));
+  border-color: var(--recog-border);
+}
+.recognition-card.n3 {
+  background: linear-gradient(to bottom right, var(--recog3-g1), var(--recog3-g2));
+  border-color: var(--recog-border);
+}
+.recognition-card.n4 {
+  background: linear-gradient(to bottom right, var(--recog4-g1), var(--recog4-g2));
+  border-color: var(--recog-border);
 }

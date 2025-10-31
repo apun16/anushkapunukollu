@@ -1,17 +1,17 @@
 import Image from "next/image";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="home" />
         
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
             <h1 className="text-5xl font-light leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-              Hi I&apos;m <span className="text-[#00674F] font-bold">Anushka.</span>
+              Hi I&apos;m <span className="text-[var(--color-dark)] font-bold">Anushka.</span>
             </h1>
             <div className="flex gap-3 mt-4 sm:mt-0">
               <a 
@@ -46,29 +46,29 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <p className="text-lg text-gray-700 leading-relaxed max-w-2xl" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-            I&apos;m interested in the intersection of finance, product, and machine learning - especially how intelligence can be applied to make information, tools, and systems more accessible. Currently studying <span className="font-bold text-[#543787]">Computer Science</span> at the <span className="font-semibold text-[#543787]">University of Waterloo</span>, I&apos;m focused on building projects that help people learn, create, and make better decisions.
+          <p className="text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
+            I&apos;m interested in the intersection of finance, product, and machine learning - especially how intelligence can be applied to make information, tools, and systems more accessible. Currently studying <span className="font-bold text-[var(--color-accent)]">Computer Science</span> at the <span className="font-semibold text-[var(--color-accent)]">University of Waterloo</span>, I&apos;m focused on building projects that help people learn, create, and make better decisions.
           </p>
         </div>
 
         <div className="mb-8">
           <h2 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#543787]">CURRENTLY</span>
+            <span className="text-[var(--color-accent)]">CURRENTLY</span>
           </h2>
           <div className="space-y-3">
             <div className="flex items-start gap-4">
-              <span className="text-[#7CB8C0] text-sm mt-1 font-mono font-semibold">01</span>
+              <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">01</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  CS @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#FEB737] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
+                  CS @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-[#543787] text-sm mt-1 font-mono font-semibold">02</span>
+              <span className="text-[var(--color-secondary)] text-sm mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#FEB737] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <span className="underline underline-offset-4 hover:bg-[#FEB737] transition-all duration-300 rounded-sm cursor-default highlight-reveal">competitive programming</span> + going down rabbit holes about different ideas at 3AM
+                  spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <span className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm cursor-default highlight-reveal">competitive programming</span> + going down rabbit holes about different ideas at 3AM
                 </p>
               </div>
             </div>
@@ -77,52 +77,52 @@ export default function Home() {
 
         <div className="mb-8">
           <h2 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[#543787]">IN THE PAST</span>
+            <span className="text-[var(--color-accent)]">IN THE PAST</span>
           </h2>
           <div className="space-y-3">
             <div className="flex items-start gap-4">
-              <span className="text-[#FEB737] text-sm mt-1 font-mono font-semibold">01</span>
+              <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">01</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  developed tools that distribute multilingual content for some of my favourite creators as a software engineering intern @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#D4E0F0] transition-all duration-300 rounded-sm highlight-reveal">Aview International</a>
+                  developed tools that distribute multilingual content for some of my favourite creators as a software engineering intern @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Aview International</a>
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-[#B76E79] text-sm mt-1 font-mono font-semibold">02</span>
+              <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  was a future tech software engineering intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#D4E0F0] transition-all duration-300 rounded-sm highlight-reveal">Nokia</a> on their Network Service Platform&apos;s Analytics team
+                  was a future tech software engineering intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Nokia</a> on their Network Service Platform&apos;s Analytics team
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-[#00674F] text-sm mt-1 font-mono font-semibold">03</span>
+              <span className="text-[var(--color-primary)] text-sm mt-1 font-mono font-semibold">03</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
                   built a biodegradable hydrogel using sugarcane bagasse (a byproduct of extracting juice from sugarcane) to help revitalize degraded soil; created to find an alternative to chemical fertilizers
                 </p>
                 <div className="ml-6 mt-2">
                   <div className="flex items-start">
-                    <span className="mr-3 text-[#FEB737] text-lg">•</span>
+                    <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
                     <span className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>raised $30k+ from Emergent Ventures, the 1517 fund, and Rideau Hall Foundation</span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-[#008B8B] text-sm mt-1 font-mono font-semibold">04</span>
+              <span className="text-[var(--color-secondary)] text-sm mt-1 font-mono font-semibold">04</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#D4E0F0] transition-all duration-300 rounded-sm highlight-reveal">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#D4E0F0] transition-all duration-300 rounded-sm highlight-reveal">Target Alpha</a>. collectively reached 10,000 high school students and partnered with TD, Binance, & others!
+                  led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Target Alpha</a>. collectively reached 10,000 high school students and partnered with TD, Binance, & others!
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="text-[#708090] text-sm mt-1 font-mono font-semibold">05</span>
+              <span className="text-[var(--color-light)] text-sm mt-1 font-mono font-semibold">05</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  photographed objects in daily life and was awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[#D4E0F0] transition-all duration-300 rounded-sm highlight-reveal">Scholastic Art & Writing Awards</a>
+                  photographed objects in daily life and was awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Scholastic Art & Writing Awards</a>
                 </p>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a 
             href="/portfolio" 
-            className="group inline-flex items-center justify-center px-6 py-3 bg-[#543787] text-white rounded-none hover:bg-[#00674F] transition-colors duration-200 text-sm font-medium tracking-wide"
+            className="group inline-flex items-center justify-center px-6 py-3 rounded-none transition-colors duration-200 text-sm font-medium tracking-wide bg-[var(--color-primary)] hover:bg-[var(--color-accent)] text-white"
             style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
           >
             <span>see more</span>
@@ -142,7 +142,7 @@ export default function Home() {
           </a>
           <a 
             href="mailto:anushka.punukollu@uwaterloo.ca" 
-            className="group inline-flex items-center justify-center px-6 py-3 border border-[#543787] text-[#543787] rounded-none hover:bg-[#543787] hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide"
+            className="group inline-flex items-center justify-center px-6 py-3 rounded-none transition-colors duration-200 text-sm font-medium tracking-wide border text-[var(--color-primary)] border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white"
             style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
           >
             <span>contact me</span>
