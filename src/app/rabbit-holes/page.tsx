@@ -18,7 +18,7 @@ export default function RabbitHoles() {
           </p>
         </div>
 
-        <div className="mb-100">
+        <div className="mb-7">
           <h3 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
             current topics I&apos;m interested in 📜
           </h3>
@@ -53,7 +53,6 @@ export default function RabbitHoles() {
         <div className="w-full mb-4">
           <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
-
         <Footer />
       </main>
     </div>
