@@ -50,7 +50,7 @@ export default function RabbitHoles() {
           </ul>
         </div>
 
-        <div className="w-full mb-8">
+        <div className="w-full mb-4">
           <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
 

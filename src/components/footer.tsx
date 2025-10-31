@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-full flex flex-col items-center gap-4 mt-4">
-      <div className="flex gap-[24px] flex-wrap items-center justify-center">
+    <footer className="w-full flex flex-col items-center">
+      {/* <div className="flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4 transition-all duration-200"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -63,10 +63,12 @@ export default function Footer() {
           />
           Email
         </a>
-      </div>
-      <p className="text-sm text-gray-600" style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}>
-        © 2025 Anushka Punukollu
-      </p>
+      </div> */}
+      <a
+        style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}
+      >
+        last updated: oct 31, 2025 🫶🏼
+      </a>
     </footer>
   );
 }

@@ -210,8 +210,8 @@ export default function Bookshelf() {
           </div>
         </div>
 
-        <div className="w-full mb-8">
-          <hr className="border-gray-300" />
+        <div className="w-full mb-4">
+          <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
 
         <Footer />
