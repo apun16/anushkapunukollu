@@ -1,40 +1,59 @@
+'use client';
+
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 export default function RabbitHoles() {
   return (
-    <div className="font-sans min-h-screen p-6 pb-12 sm:p-12">
-      <Navbar currentPage="rabbit-holes" />
-      
-      <main className="flex flex-col gap-6 items-center sm:items-start max-w-4xl w-full mx-auto">
-        <div className="w-full">
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            rabbit holes i&apos;m currently falling down
-          </h1>
-          <p
-            className="text-lg mt-2"
-            style={{ fontFamily: 'Sora, sans-serif' }}
-          >
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+      <main className="max-w-3xl mx-auto px-6 py-8">
+        <Navbar currentPage="rabbit-holes" />
+        
+        <div className="mb-5">
+          <h2 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
+            <span className="text-[var(--color-dark)] font-bold">rabbit holes</span>
+          </h2>
+          <p className="text-xl leading-relaxed max-w-2xl mb-2" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
             work in progress :)
           </p>
-          <div
-            className="mt-4"
-            style={{ fontFamily: 'Sora, sans-serif' }}
-            >
-          <p className="mb-2 font-semibold">current topics I&apos;m interested in 📜</p>
-          <ul className="list-disc list-inside space-y-1">
-            <li>dying languages</li>
-            <li>how art historians use chemistry to date, authenticate, and catch forgeries</li>
-            <li>ethics of progress</li>
-            <li>the physical geography of the internet</li>
-            <li>evolution of computing</li>
-            <li>open source software</li>
+        </div>
+
+        <div className="mb-100">
+          <h3 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
+            current topics I&apos;m interested in 📜
+          </h3>
+          <ul className="space-y-2" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>dying languages</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>how art historians use chemistry to date, authenticate, and catch forgeries</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>ethics of progress</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>the physical geography of the internet</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>evolution of computing</span>
+            </li>
+            <li className="flex items-start">
+              <span className="mr-3 text-[var(--color-accent)] text-lg">•</span>
+              <span className="text-base leading-relaxed" style={{ color: 'var(--color-foreground)' }}>open source software</span>
+            </li>
           </ul>
         </div>
+
+        <div className="w-full mb-8">
+          <hr style={{ borderColor: 'var(--color-border)' }} />
         </div>
-        <div className="w-full">
-          <hr className="border-gray-300" />
-        </div>
+
         <Footer />
       </main>
     </div>
