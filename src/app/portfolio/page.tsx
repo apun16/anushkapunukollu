@@ -20,11 +20,11 @@ interface Project {
 const sampleProjects: Project[] = [
   {
     id: 1,
-    title: "SucroSoil",
-    description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
-    languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
-    imageSrc: "/SucroSoil_Thumbnail.png",
-    liveUrl: "https://devpost.com/software/sucrosoil"
+    title: "Go Neural Network",
+    description: "A full Go-playing AI integrating a dual-head CNN with residual blocks and Monte Carlo Tree Search (MCTS), inspired by AlphaGo. Includes a complete Go engine with rules validation, including ko rule and capture detection, and a CLI for playing against the trained AI.",
+    languages: ["Python", "PyTorch", "NumPy", "Monte Carlo Tree Search"],
+    imageSrc: "/GoNeuralNetwork.png",
+    githubUrl: "https://github.com/apun16/Go-Neural-Network"
   },
   {
     id: 2,
@@ -37,20 +37,28 @@ const sampleProjects: Project[] = [
   },
   {
     id: 3,
+    title: "Flux",
+    description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions.",
+    languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
+    imageSrc: "/Flux.png",
+    liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
+  },
+  {
+    id: 4,
+    title: "SucroSoil",
+    description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
+    languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
+    imageSrc: "/SucroSoil_Thumbnail.png",
+    liveUrl: "https://devpost.com/software/sucrosoil"
+  },
+  {
+    id: 5,
     title: "SeaBloom",
     description: "SeaBloom is a coral reef monitoring system that uses convolutional neural networks to classify bleached vs unbleached coral from images with 98% accuracy. The model utilizes PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to enhance training on a dataset of coral images collected from multiple sources.",
     languages: ["Python", "PyTorch", "Computer Vision"],
     imageSrc: "/SeaBloom.png",
     githubUrl: "https://github.com/apun16/SeaBloom",
     liveUrl: "https://medium.com/@anushkapun/seabloom-fab26eec2aea"
-  },
-  {
-    id: 4,
-    title: "Flux",
-    description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions.",
-    languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
-    imageSrc: "/Flux.png",
-    liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
   }
 ];
 

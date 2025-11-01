@@ -19,7 +19,7 @@ export default function ProjectTab({
   liveUrl 
 }: ProjectTabProps) {
   return (
-    <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ backgroundColor: 'var(--color-background-light)', borderColor: 'var(--color-light)', color: 'var(--color-foreground)' }}>
+    <div className="rounded-lg border p-6 hover:shadow-md hover:scale-105 transition-all duration-200" style={{ backgroundColor: 'var(--color-background-light)', borderColor: 'var(--color-light)', color: 'var(--color-foreground)' }}>
       <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden" style={{ backgroundColor: 'var(--color-background)' }}>
         <Image
           src={imageSrc}
