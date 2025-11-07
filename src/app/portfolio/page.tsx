@@ -29,7 +29,7 @@ const sampleProjects: Project[] = [
   {
     id: 2,
     title: "FakeSeek",
-    description: "A deepfake detection tool that helps users spot AI-generated content before it spreads and find if their identity has been compromised. Built in 36 hours for TechNova 2025 & won 3rd overall.",
+    description: "A deepfake detection tool that helps users spot AI-generated content before it spreads and find if their identity has been compromised. Utilizes Gemini API to analyze images and text, and BeautifulSoup to scrape social media content. Built in 36 hours for TechNova 2025 & placed 3rd overall.",
     languages: ["TypeScript", "Python", "GeminiAPI", "React", "MongoDB", "TailwindCSS"],
     imageSrc: "/fakeseek_logo.png",
     githubUrl: "https://github.com/apun16/FakeSeek.",
@@ -37,14 +37,6 @@ const sampleProjects: Project[] = [
   },
   {
     id: 3,
-    title: "Flux",
-    description: "Flux is an autonomous drone system that detects methane leaks from abandoned oil wells. Using methane sensors, GPS, and LiDAR, each drone scans high-risk areas based on location, age, and nearby emissions and uses ML to analyze leaks. Placed Top 7 out of 150+ submissions and 3000+ applicants in Moonshot Pirates Climate Challenge.",
-    languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
-    imageSrc: "/Flux.png",
-    liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
-  },
-  {
-    id: 4,
     title: "SucroSoil",
     description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
     languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
@@ -52,14 +44,31 @@ const sampleProjects: Project[] = [
     liveUrl: "https://devpost.com/software/sucrosoil"
   },
   {
+    id: 4,
+    title: "ConnectED",
+    description: "ConnectED is a platform that helps FGLI (First-Generation Low-Income) students access higher education resources. Designed a Tinder-style scholarship feed with personalized recommendations in Figma, a financial aid calculator, and a mentor matching system using NLP.",
+    languages: ["Python", "Figma", "UI/UX Design", "NLTK", "Scrapy", "Google APIs"],
+    imageSrc: "/ConnectED.png",
+    githubUrl: "https://github.com/aravM23/ConnectED",
+    liveUrl: "https://devpost.com/software/connected-ie5ghl"
+  },
+  {
     id: 5,
+    title: "Flux",
+    description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions. Placed Top 7 @ Moonshot Pirates Climate Challenge.",
+    languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
+    imageSrc: "/Flux.png",
+    liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
+  },
+  {
+    id: 6,
     title: "SeaBloom",
-    description: "SeaBloom is a coral reef monitoring system that uses convolutional neural networks to classify bleached vs unbleached coral from images with 98% accuracy. The model utilizes PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to enhance training on a dataset of coral images collected from multiple sources.",
-    languages: ["Python", "PyTorch", "Computer Vision"],
+    description: "SeaBloom is a coral reef monitoring system that uses CNNs to classify bleached vs unbleached coral from images with 98% accuracy. The model uses PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to improve the training process. Placed Top 10 @ NFTE World Series of Innovation BMO Challenge.",
+    languages: ["Python", "PyTorch", "Computer Vision", "Figma"],
     imageSrc: "/SeaBloom.png",
     githubUrl: "https://github.com/apun16/SeaBloom",
     liveUrl: "https://medium.com/@anushkapun/seabloom-fab26eec2aea"
-  }
+  },
 ];
 
 const skillsData = {
