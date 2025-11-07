@@ -38,7 +38,7 @@ const sampleProjects: Project[] = [
   {
     id: 3,
     title: "Flux",
-    description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks while prioritizing high-risk wells based on location, age, and nearby emissions. Placed among the Top 7 teams out of 3000+ applications in Moonshot Pirates Climate Challenge.",
+    description: "Flux is an autonomous drone system that detects methane leaks from abandoned oil wells. Using methane sensors, GPS, and LiDAR, each drone scans high-risk areas based on location, age, and nearby emissions and uses ML to analyze leaks. Placed Top 7 out of 150+ submissions and 3000+ applicants in Moonshot Pirates Climate Challenge.",
     languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
     imageSrc: "/Flux.png",
     liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
