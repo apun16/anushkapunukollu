@@ -43,7 +43,7 @@ const themes: Record<Theme, ThemeColors> = {
     border: " #CBD5E1",
   },
   hyderabad: {
-    primary: "rgb(204, 108, 67)", 
+    primary: "rgb(230, 122, 77)", 
     secondary: " #C67D1F",
     accent: "rgb(99, 43, 43)",
     light: " #F4E8D8",
