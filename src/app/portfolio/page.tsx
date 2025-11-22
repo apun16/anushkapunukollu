@@ -207,7 +207,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -257,7 +257,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -310,7 +310,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   CEO, Board Member
                 </h3>
@@ -359,7 +359,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Chief Financial Officer
                 </h3>
