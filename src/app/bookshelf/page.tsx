@@ -3,33 +3,47 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
-
-interface Book {
-  id: number;
-  title: string;
-  genres: string[];
-  topics: string[];
-  rating: number;
-  lastRead: string;
-  tldr: string;
-  annotations: string;
-}
+import BookDetailPanel, { type Book } from "../../components/book-details";
 
 const sampleBooks: Book[] = [
   {
     id: 1,
-    title: "Sapiens",
-    genres: ["History", "Anthropology"],
-    topics: ["Human Evolution", "Society", "Culture"],
+    title: "Crying in H Mart",
+    author: "Michelle Zauner",
+    genres: ["History", "Non-Fiction"],
+    topics: ["Growth", "Culture", "Autobiography"],
     rating: 5,
-    lastRead: "2024-01-15",
-    tldr: " see the world through cognitive, agricultural, and scientific revolutions.",
-    annotations: " ",
-  }
+    lastRead: "2025-11-05",
+    eli5: "Crying in H Mart is a true story about Michelle Zauner losing her mom to cancer and how deeply she misses her. She remembers her mom through cooking Korean food, visiting the grocery store H Mart, and practicing family traditions. The book explores love, grief, family, and figuring out who you are when someone you love is gone.",
+    annotations: "I read this after a friend in english class said one of my narrative essays reminded him of Zauner's writing. Wow this book was incredible especially when I think about my grandmother and how when I'm away from her it is the traditions she would do with me that I miss the most.",
+    imageSrc: "/content/CryinginHMart.jpg",
+    pages: 256, 
+  },
+  {
+    id: 2,
+    title: "Thinking, Fast and Slow",
+    author: "Daniel Kahneman",
+    genres: ["Non-Fiction", "Business", "Psychology"],
+    topics: ["Bias", "Decision Making"],
+    rating: 4,
+    lastRead: "2025-07-29",
+    eli5: `Our brain has two ways of thinking: 
+
+Fast Thinking: quick, automatic, and instinctive. It's like when you immediately know the answer to 2 + 2 or instinctively react to a scary dog. It helps us act fast but can sometimes lead to mistakes. 
+
+Slow Thinking: deliberate, careful, and logical. It's what you use when solving a tricky math problem, planning a big decision, or calculating risks in poker. 
+
+Kahneman explains that we often rely too much on fast thinking, which can create biases and bad decisions. By using slow thinking, we can make smarter choices and better judge probability, risk, and value.`,
+    annotations: "Helps with understanding how to think about poker or trading. Since we often use fast thinking we tend to be overconfident and take risky descions. By choosing to think slowly you can make smarter choices. First heard about this at WiSE @ jane street where someone told me it would help me play figgie better :)",
+    imageSrc: "/content/ThinkingFastAndSlow.jpg",
+    pages: 512,
+  },
 ];
 
 export default function Bookshelf() {
   const [recommendation, setRecommendation] = useState("");
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const handleRecommendationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,14 +73,23 @@ export default function Bookshelf() {
     }
   };
 
+  const handleBookClick = (book: Book) => {
+    setSelectedBook(book);
+    setIsPanelOpen(true);
+  };
+
+  const handleClosePanel = () => {
+    setIsPanelOpen(false);
+    setTimeout(() => setSelectedBook(null), 300);
+  };
+
   const renderStars = (rating: number) => {
     return "★".repeat(rating) + "☆".repeat(5 - rating);
   };
 
   const getTagColor = (tag: string) => {
     const colorMap: Record<string, { bg: string; text: string; border: string }> = {
-      // Genres - using light colors
-      'Non-fiction': { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' },
+      'Non-Fiction': { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' },
       'History': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
       'Business': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
       'Self-help': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
@@ -74,8 +97,8 @@ export default function Bookshelf() {
       'Anthropology': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
       'Entrepreneurship': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
       'Cognitive Science': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
-      
-      // Topics
+      'Autobiography': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
+
       'Human Evolution': { bg: 'var(--color-light)', text: 'var(--color-primary)', border: 'var(--color-secondary)' },
       'Society': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
       'Culture': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
@@ -83,7 +106,8 @@ export default function Bookshelf() {
       'Innovation': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
       'Product Development': { bg: 'var(--color-secondary)', text: 'white', border: 'var(--color-secondary)' },
       'Decision Making': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
-      'Bias': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Growth': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
+      'Bias': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
       'Rationality': { bg: 'var(--color-dark)', text: 'white', border: 'var(--color-dark)' },
       'Sociology': { bg: 'var(--color-accent)', text: 'var(--color-primary)', border: 'var(--color-accent)' },
       'Cognitive Biases': { bg: 'var(--color-primary)', text: 'white', border: 'var(--color-primary)' },
@@ -95,7 +119,7 @@ export default function Bookshelf() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+    <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="bookshelf" />
         
@@ -104,7 +128,7 @@ export default function Bookshelf() {
             <span className="text-[var(--color-dark)] font-bold">bookshelf</span>
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-            For a long time I&apos;ve been keeping a ledger of every book I&apos;ve owned & read along with a short reflection on it. I think this quote best describes why I love to read:
+            For a long time I&apos;ve been keeping a ledger of every book/article I&apos;ve owned & read along with a short reflection on it. I think this quote best describes why I love to read:
           </p>
           
           <blockquote className="border-l-4 pl-6 py-4 bg-gray-50 rounded-r-lg italic text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-primary)' }}>
@@ -126,7 +150,7 @@ export default function Bookshelf() {
                 value={recommendation}
                 onChange={(e) => setRecommendation(e.target.value)}
                 placeholder="Book title and author..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 placeholder:text-[\#2d2d2d]" // tailwind class for placeholder
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-none focus:outline-none focus:ring-2 placeholder:text-[\#2d2d2d]"
                 style={{ 
                   fontFamily: 'Sora, system-ui, sans-serif',
                   color: '#2d2d2d',
@@ -161,7 +185,8 @@ export default function Bookshelf() {
             {sampleBooks.map((book) => (
               <div
                 key={book.id}
-                className="grid grid-cols-12 gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors items-start"
+                onClick={() => handleBookClick(book)}
+                className="grid grid-cols-12 gap-4 p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors items-start cursor-pointer"
               >
                 <div className="col-span-4 font-medium" style={{ fontFamily: 'Satoshi-Medium, Satoshi-Variable, system-ui, sans-serif' }}>
                   {book.title}
@@ -176,7 +201,7 @@ export default function Bookshelf() {
                         style={{
                           backgroundColor: tagStyle.bg,
                           color: tagStyle.text,
-                          borderColor: tagStyle.border
+                          borderColor: 'var(--color-secondary)'
                         } as React.CSSProperties}
                       >
                         {genre}
@@ -194,7 +219,7 @@ export default function Bookshelf() {
                         style={{
                           backgroundColor: tagStyle.bg,
                           color: tagStyle.text,
-                          borderColor: tagStyle.border
+                          borderColor: 'var(--color-secondary)'
                         } as React.CSSProperties}
                       >
                         {topic}
@@ -216,6 +241,14 @@ export default function Bookshelf() {
 
         <Footer />
       </main>
+
+      <BookDetailPanel
+        book={selectedBook}
+        isOpen={isPanelOpen}
+        onClose={handleClosePanel}
+        getTagColor={getTagColor}
+        renderStars={renderStars}
+      />
     </div>
   );
 }

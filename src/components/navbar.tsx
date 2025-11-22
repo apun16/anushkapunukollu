@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { CommandMenu } from "./ui/commandmenu";
-import { useTheme } from "../utils/theme-context";
+import { useTheme } from "./contexts/theme-context";
 
 interface NavbarProps {
   currentPage?: string;
@@ -49,9 +49,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
             >
               bookshelf
             </Link>
-            {/* Dark/Light toggle removed as requested */}
             <button
-              className="flex items-center gap-2 px-3 py-1.5 text-sm border border-[var(--color-border)] rounded-lg hover:bg-[var(--color-background-light)] transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 text-sm border border-[var(--color-border)] rounded-lg hover:bg-[var(--color-background-light)] transition-colors"
               onClick={() => {
                 const event = new KeyboardEvent('keydown', {
                   key: 'k',
@@ -63,6 +62,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
               style={{ color: 'var(--color-foreground)' }}
             >
               <span className="text-[var(--color-foreground)]">⌘</span>
+              <span className="text-[var(--color-foreground)]">+</span>
               <span className="text-[var(--color-foreground)]">K</span>
             </button>
           </div>

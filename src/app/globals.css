@@ -76,3 +76,21 @@ body {
   background: linear-gradient(to bottom right, var(--recog4-g1), var(--recog4-g2));
   border-color: var(--recog-border);
 }
+.geometric-pattern {
+  position: relative;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20.5px,
+      rgba(0, 0, 0, 0.02) 20px,
+      rgba(0, 0, 0, 0.02) 22px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20.5px,
+      rgba(0, 0, 0, 0.02) 20px,
+      rgba(0, 0, 0, 0.02) 22px
+    );
+}

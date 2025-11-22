@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
-import ProjectTab from "../../components/ProjectTab";
-import { useTheme } from "../../utils/theme-context";
+import { useTheme } from "../../components/contexts/theme-context";
 
 interface Project {
   id: number;
@@ -23,7 +22,7 @@ const sampleProjects: Project[] = [
     title: "Go Neural Network",
     description: "A full Go-playing AI integrating a dual-head CNN with residual blocks and Monte Carlo Tree Search (MCTS), inspired by AlphaGo. Includes a complete Go engine with rules validation, including ko rule and capture detection, and a CLI for playing against the trained AI.",
     languages: ["Python", "PyTorch", "NumPy", "Monte Carlo Tree Search"],
-    imageSrc: "/GoNeuralNetwork.png",
+    imageSrc: "/projects/GoNeuralNetwork.png",
     githubUrl: "https://github.com/apun16/Go-Neural-Network"
   },
   {
@@ -31,7 +30,7 @@ const sampleProjects: Project[] = [
     title: "FakeSeek",
     description: "A deepfake detection tool that helps users spot AI-generated content before it spreads and find if their identity has been compromised. Utilizes Gemini API to analyze images and text, and BeautifulSoup to scrape social media content. Built in 36 hours for TechNova 2025 & placed 3rd overall.",
     languages: ["TypeScript", "Python", "GeminiAPI", "React", "MongoDB", "TailwindCSS"],
-    imageSrc: "/fakeseek_logo.png",
+    imageSrc: "/projects/fakeseek_logo.png",
     githubUrl: "https://github.com/apun16/FakeSeek.",
     liveUrl: "https://devpost.com/software/fakeseek"
   },
@@ -40,7 +39,7 @@ const sampleProjects: Project[] = [
     title: "SucroSoil",
     description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
     languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
-    imageSrc: "/SucroSoil_Thumbnail.png",
+    imageSrc: "/projects/SucroSoil_Thumbnail.png",
     liveUrl: "https://devpost.com/software/sucrosoil"
   },
   {
@@ -48,7 +47,7 @@ const sampleProjects: Project[] = [
     title: "ConnectED",
     description: "ConnectED is a platform that helps FGLI (First-Generation Low-Income) students access higher education resources. Designed a Tinder-style scholarship feed with personalized recommendations in Figma, a financial aid calculator, and a mentor matching system using NLP.",
     languages: ["Python", "Figma", "UI/UX Design", "NLTK", "Scrapy", "Google APIs"],
-    imageSrc: "/ConnectED.png",
+    imageSrc: "/projects/ConnectED.png",
     githubUrl: "https://github.com/aravM23/ConnectED",
     liveUrl: "https://devpost.com/software/connected-ie5ghl"
   },
@@ -57,7 +56,7 @@ const sampleProjects: Project[] = [
     title: "Flux",
     description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions. Placed Top 7 @ Moonshot Pirates Climate Challenge.",
     languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
-    imageSrc: "/Flux.png",
+    imageSrc: "/projects/Flux.png",
     liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
   },
   {
@@ -65,7 +64,7 @@ const sampleProjects: Project[] = [
     title: "SeaBloom",
     description: "SeaBloom is a coral reef monitoring system that uses CNNs to classify bleached vs unbleached coral from images with 98% accuracy. The model uses PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to improve the training process. Placed Top 10 @ NFTE World Series of Innovation BMO Challenge.",
     languages: ["Python", "PyTorch", "Computer Vision", "Figma"],
-    imageSrc: "/SeaBloom.png",
+    imageSrc: "/projects/SeaBloom.png",
     githubUrl: "https://github.com/apun16/SeaBloom",
     liveUrl: "https://medium.com/@anushkapun/seabloom-fab26eec2aea"
   },
@@ -95,7 +94,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+    <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="portfolio" />
         
@@ -129,15 +128,64 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredProjects.map((project) => (
-              <ProjectTab
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                languages={project.languages}
-                imageSrc={project.imageSrc}
-                githubUrl={project.githubUrl}
-                liveUrl={project.liveUrl}
-              />
+              <div key={project.id} className="rounded-lg border p-6 hover:shadow-md hover:scale-105 transition-all duration-200" style={{ backgroundColor: 'var(--color-background-light)', borderColor: 'var(--color-light)', color: 'var(--color-foreground)' }}>
+                <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden" style={{ backgroundColor: 'var(--color-background)' }}>
+                  <Image
+                    src={project.imageSrc}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
+                    {project.title}
+                  </h3>
+                  <div className="flex gap-2">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-md flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
+                      >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-md flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.languages.map((language, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 rounded-full text-xs font-medium border"
+                      style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)', borderColor: 'var(--color-secondary)' }}
+                    >
+                      {language}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-sm leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
+                  {project.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -171,19 +219,19 @@ export default function Projects() {
                 Built video distribution tools serving 300+ media creators, optimized pipelines to increase throughput by 30%, and automated content publishing, saving over 50 hours per month on post-processing.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   NestJS
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   MongoDB
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Full Stack Development
                 </span>
               </div>
@@ -221,22 +269,22 @@ export default function Projects() {
                 Worked on the Network Service Platform&apos;s Analytics team (Future Tech Program), migrating 10,000+ lines of legacy front-end code across 120+ files to improve load times and reduce bug reports.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   React
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   State Management
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Jira
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Confluence
                 </span>
               </div>
@@ -273,19 +321,19 @@ export default function Projects() {
               <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Led a national financial literacy non-profit, reaching 6,000+ students by teaching a case-based business curriculum across 50 schools and hosting competitions in partnership with TD, Binance, and other organizations.              </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Leadership
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   KPI Tracking
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Fundraising
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Non-Profit Strategy
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Project Management
                 </span>
               </div>
@@ -323,16 +371,16 @@ export default function Projects() {
                 Served as CFO, managing over $10K in funding and building partnerships with sponsors, including the University of Toronto and CPA Ontario; recognized by the Government of Ontario.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Financial Planning
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Microsoft Excel
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Pitching
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Sponsorships
                 </span>
               </div>
@@ -382,8 +430,8 @@ export default function Projects() {
             {getFilteredSkills().map((skill, index) => (
               <div 
                 key={index}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors"
-                style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)' }}
+                className="px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors border"
+                style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)', borderColor: 'var(--color-secondary)' }}
               >
                 {skill}
               </div>

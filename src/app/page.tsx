@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+    <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
       <main className="max-w-3xl mx-auto px-6 py-8">
         <Navbar currentPage="home" />
         
@@ -47,13 +47,13 @@ export default function Home() {
             </div>
           </div>
           <p className="text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
-            I&apos;m interested in the intersection of finance, product, and machine learning - especially how intelligence can be applied to make information, tools, and systems more accessible. Currently studying <span className="font-bold text-[var(--color-accent)]">Computer Science</span> at the <span className="font-semibold text-[var(--color-accent)]">University of Waterloo</span>, I&apos;m focused on building projects that help people learn, create, and make better decisions.
+            I&apos;m interested in the intersection of finance, product, and machine learning - especially how intelligence can be applied to make information, tools, and systems more accessible. Currently studying <span className="font-bold text-[var(--color-primary)]">Computer Science</span> at the <span className="font-bold text-[var(--color-primary)]">University of Waterloo</span>, I&apos;m focused on building projects that help people learn, create, and make better decisions.
           </p>
         </div>
 
         <div className="mb-8">
           <h2 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[var(--color-accent)]">CURRENTLY</span>
+            <span className="text-[var(--color-primary)]">CURRENTLY</span>
           </h2>
           <div className="space-y-3">
             <div className="flex items-start gap-4">
@@ -77,7 +77,7 @@ export default function Home() {
 
         <div className="mb-8">
           <h2 className="text-lg font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
-            <span className="text-[var(--color-accent)]">IN THE PAST</span>
+            <span className="text-[var(--color-primary)]">IN THE PAST</span>
           </h2>
           <div className="space-y-3">
             <div className="flex items-start gap-4">
@@ -132,7 +132,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a 
             href="/portfolio" 
-            className="group inline-flex items-center justify-center px-6 py-3 rounded-none transition-colors duration-200 text-sm font-medium tracking-wide bg-[var(--color-primary)] hover:bg-[var(--color-accent)] text-white"
+            className="group inline-flex items-center justify-center px-6 py-3 rounded-none transition-colors duration-200 text-sm font-medium tracking-wide bg-[var(--color-accent)] hover:bg-[var(--color-primary)] text-white"
             style={{ fontFamily: 'Sora, system-ui, sans-serif' }}
           >
             <span>see more</span>

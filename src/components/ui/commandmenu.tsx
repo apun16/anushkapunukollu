@@ -7,7 +7,6 @@ import {
   Briefcase,
   BookOpen,
   Rabbit,
-  Palette,
 } from "lucide-react"
 
 import {
@@ -18,38 +17,100 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+  CommandShortcut,
 } from "./command"
-import { useTheme, type Theme } from "../../utils/theme-context"
+import { useTheme, type Theme } from "../contexts/theme-context"
 
-const themeConfig: Record<Theme, { label: string; emoji: string; bgColor: string }> = {
-  mediterranean: { label: "Mediterranean", emoji: "🌊", bgColor: "#E8E3F0" },
-  nyc: { label: "NYC", emoji: "🏙️", bgColor: "#F5E8D8" },
-  hyderabad: { label: "Hyderabad", emoji: "🕌", bgColor: "#FFE5D0" },
-  amsterdam: { label: "Amsterdam", emoji: "🌷", bgColor: "#E0F5F2" },
-  toronto: { label: "Toronto", emoji: "🍁", bgColor: "#DBE8F5" },
-  london: { label: "London", emoji: "🇬🇧", bgColor: "#F1F3F4" },
+const themeConfig: Record<Theme, { label: string; emoji: string; bgColor: string; number: string }> = {
+  mediterranean: { label: "Mediterranean", emoji: "🌊", bgColor: "#E8E3F0", number: "1" },
+  nyc: { label: "NYC", emoji: "🏙️", bgColor: "#F5E8D8", number: "2" },
+  hyderabad: { label: "Hyderabad", emoji: "🕌", bgColor: "#FFE5D0", number: "3" },
+  amsterdam: { label: "Amsterdam", emoji: "🌷", bgColor: "#E0F5F2", number: "4" },
+  toronto: { label: "Toronto", emoji: "🍁", bgColor: "#DBE8F5", number: "5" },
+  london: { label: "London", emoji: "🇬🇧", bgColor: "#F1F3F4", number: "6" },
 }
 
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false)
+  const [shiftPressed, setShiftPressed] = React.useState(false)
   const router = useRouter()
   const { theme, setTheme } = useTheme()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
+      if (e.key === "Shift") {
+        setShiftPressed(true)
+      }
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
+        return
+      }
+      if (e.shiftKey && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        switch (e.key.toUpperCase()) {
+          case "H":
+            e.preventDefault()
+            router.push("/")
+            setOpen(false)
+            break
+          case "P":
+            e.preventDefault()
+            router.push("/portfolio")
+            setOpen(false)
+            break
+          case "B":
+            e.preventDefault()
+            router.push("/bookshelf")
+            setOpen(false)
+            break
+          case "R":
+            e.preventDefault()
+            router.push("/rabbit-holes")
+            setOpen(false)
+            break
+          case "!": 
+            e.preventDefault()
+            setTheme("mediterranean")
+            break
+          case "@": 
+            e.preventDefault()
+            setTheme("nyc")
+            break
+          case "#":
+            e.preventDefault()
+            setTheme("hyderabad")
+            break
+          case "$": 
+            e.preventDefault()
+            setTheme("amsterdam")
+            break
+          case "%": 
+            e.preventDefault()
+            setTheme("toronto")
+            break
+          case "^":
+            e.preventDefault()
+            setTheme("london")
+            break
+        }
+      }
+    }    
+    const up = (e: KeyboardEvent) => {
+      if (e.key === "Shift") {
+        setShiftPressed(false)
       }
     }
 
     document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+    document.addEventListener("keyup", up)
+    return () => {
+      document.removeEventListener("keydown", down)
+      document.removeEventListener("keyup", up)
+    }
+  }, [router, setTheme])
 
   const runCommand = React.useCallback((command: () => unknown) => {
     command()
-    // Don't close the menu automatically
   }, [])
 
   return (
@@ -59,21 +120,25 @@ export function CommandMenu() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
-            <CommandItem onSelect={() => runCommand(() => router.push("/"))}>
+            <CommandItem onSelect={() => runCommand(() => { router.push("/"); setOpen(false); })}>
               <Home className="mr-2 h-4 w-4" />
               <span>Home</span>
+              <CommandShortcut>{shiftPressed ? 'H' : 'Shift+H'}</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push("/portfolio"))}>
+            <CommandItem onSelect={() => runCommand(() => { router.push("/portfolio"); setOpen(false); })}>
               <Briefcase className="mr-2 h-4 w-4" />
               <span>Portfolio</span>
+              <CommandShortcut>{shiftPressed ? 'P' : 'Shift+P'}</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push("/bookshelf"))}>
+            <CommandItem onSelect={() => runCommand(() => { router.push("/bookshelf"); setOpen(false); })}>
               <BookOpen className="mr-2 h-4 w-4" />
               <span>Bookshelf</span>
+              <CommandShortcut>{shiftPressed ? 'B' : 'Shift+B'}</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push("/rabbit-holes"))}>
+            <CommandItem onSelect={() => runCommand(() => { router.push("/rabbit-holes"); setOpen(false); })}>
               <Rabbit className="mr-2 h-4 w-4" />
               <span>Rabbit Holes</span>
+              <CommandShortcut>{shiftPressed ? 'R' : 'Shift+R'}</CommandShortcut>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
@@ -92,22 +157,25 @@ export function CommandMenu() {
                 >
                   <span className="mr-2">{config.emoji}</span>
                   <span>{config.label}</span>
-                  {isActive && (
-                    <span className="ml-auto text-xs opacity-70">Current</span>
-                  )}
+                  <div className="ml-auto flex items-center gap-2">
+                    {isActive && (
+                      <span className="text-xs opacity-70">Current</span>
+                    )}
+                    <CommandShortcut>{shiftPressed ? config.number : `Shift+${config.number}`}</CommandShortcut>
+                  </div>
                 </CommandItem>
               )
             })}
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="External Links">
-            <CommandItem onSelect={() => runCommand(() => window.open("https://linkedin.com/in/anushkapunukollu", "_blank"))}>
+            <CommandItem onSelect={() => runCommand(() => { window.open("https://linkedin.com/in/anushkapunukollu", "_blank"); setOpen(false); })}>
               <span>LinkedIn</span>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => window.open("https://github.com/anushka16", "_blank"))}>
+            <CommandItem onSelect={() => runCommand(() => { window.open("https://github.com/apun16", "_blank"); setOpen(false); })}>
               <span>GitHub</span>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => window.open("/resume.pdf", "_blank"))}>
+            <CommandItem onSelect={() => runCommand(() => { window.open("/resume.pdf", "_blank"); setOpen(false); })}>
               <span>Resume</span>
             </CommandItem>
           </CommandGroup>
