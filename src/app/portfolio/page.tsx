@@ -128,8 +128,8 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredProjects.map((project) => (
-              <div key={project.id} className="rounded-lg border p-6 hover:shadow-md hover:scale-105 transition-all duration-200" style={{ backgroundColor: 'var(--color-background-light)', borderColor: 'var(--color-light)', color: 'var(--color-foreground)' }}>
-                <div className="relative w-full h-48 rounded-lg mb-4 overflow-hidden" style={{ backgroundColor: 'var(--color-background)' }}>
+              <div key={project.id} className="rounded-none border p-6 hover:shadow-md hover:scale-105 transition-all duration-200" style={{ backgroundColor: 'var(--color-background-light)', borderColor: 'var(--color-light)', color: 'var(--color-foreground)' }}>
+                <div className="relative w-full h-48 rounded-none mb-4 overflow-hidden" style={{ backgroundColor: 'var(--color-background)' }}>
                   <Image
                     src={project.imageSrc}
                     alt={project.title}
@@ -148,7 +148,7 @@ export default function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-md flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
+                        className="w-8 h-8 rounded-none flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
                       >
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -160,7 +160,7 @@ export default function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-md flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
+                        className="w-8 h-8 rounded-none flex items-center justify-center transition-colors bg-[var(--color-light)] text-[var(--color-primary)] hover:bg-[var(--color-accent)] hover:text-white"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -174,7 +174,7 @@ export default function Projects() {
                   {project.languages.map((language, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 rounded-full text-xs font-medium border"
+                      className="px-3 py-1 rounded-none text-xs font-medium border"
                       style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)', borderColor: 'var(--color-secondary)' }}
                     >
                       {language}
@@ -199,7 +199,7 @@ export default function Projects() {
             <span className="text-[var(--color-dark)] font-bold">experience</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+            <div className="rounded-none border p-6 hover:shadow-md transition-all duration-200" style={{ 
               backgroundColor: 'var(--color-background-light)', 
               borderColor: 'var(--color-light)',
               color: 'var(--color-foreground)'
@@ -207,7 +207,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/work/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/Aview_logo.jpeg" alt="Aview International" width={32} height={32} className="w-8 h-8 rounded-none" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -219,19 +219,19 @@ export default function Projects() {
                 Built video distribution tools serving 300+ media creators, optimized pipelines to increase throughput by 30%, and automated content publishing, saving over 50 hours per month on post-processing.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   NestJS
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   MongoDB
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Full Stack Development
                 </span>
               </div>
@@ -249,7 +249,7 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+            <div className="rounded-none border p-6 hover:shadow-md transition-all duration-200" style={{ 
               backgroundColor: 'var(--color-background-light)', 
               borderColor: 'var(--color-light)',
               color: 'var(--color-foreground)'
@@ -257,7 +257,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/work/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/Nokia_logo.jpeg" alt="Nokia" width={32} height={32} className="w-8 h-8 rounded-none" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Software Engineering Intern
                 </h3>
@@ -269,22 +269,22 @@ export default function Projects() {
                 Worked on the Network Service Platform&apos;s Analytics team (Future Tech Program), migrating 10,000+ lines of legacy front-end code across 120+ files to improve load times and reduce bug reports.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   JavaScript
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   React
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   State Management
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Jira
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Confluence
                 </span>
               </div>
@@ -302,7 +302,7 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+            <div className="rounded-none border p-6 hover:shadow-md transition-all duration-200" style={{ 
               backgroundColor: 'var(--color-background-light)', 
               borderColor: 'var(--color-light)',
               color: 'var(--color-foreground)'
@@ -310,7 +310,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/work/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/fuse_logo.jpeg" alt="FUSE Society" width={32} height={32} className="w-8 h-8 rounded-none" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   CEO, Board Member
                 </h3>
@@ -321,19 +321,19 @@ export default function Projects() {
               <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
                 Led a national financial literacy non-profit, reaching 6,000+ students by teaching a case-based business curriculum across 50 schools and hosting competitions in partnership with TD, Binance, and other organizations.              </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Leadership
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   KPI Tracking
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Fundraising
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Non-Profit Strategy
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Project Management
                 </span>
               </div>
@@ -351,7 +351,7 @@ export default function Projects() {
               </a>
             </div>
 
-            <div className="rounded-lg border p-6 hover:shadow-md transition-all duration-200" style={{ 
+            <div className="rounded-none border p-6 hover:shadow-md transition-all duration-200" style={{ 
               backgroundColor: 'var(--color-background-light)', 
               borderColor: 'var(--color-light)',
               color: 'var(--color-foreground)'
@@ -359,7 +359,7 @@ export default function Projects() {
             onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--color-primary)'}
             onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--color-light)'}>
               <div className="flex items-center gap-3 mb-3">
-                <Image src="/work/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded" />
+                <Image src="/work/TargetAlpha_logo.jpeg" alt="Target Alpha" width={32} height={32} className="w-8 h-8 rounded-none" />
                 <h3 className="text-lg font-bold" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
                   Chief Financial Officer
                 </h3>
@@ -371,16 +371,16 @@ export default function Projects() {
                 Served as CFO, managing over $10K in funding and building partnerships with sponsors, including the University of Toronto and CPA Ontario; recognized by the Government of Ontario.
               </p>
               <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Financial Planning
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Microsoft Excel
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Pitching
                 </span>
-                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-full text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
+                <span className="px-3 py-1 bg-[var(--color-light)] text-[var(--color-primary)] rounded-none text-xs font-medium border" style={{ fontFamily: 'Sora, system-ui, sans-serif', borderColor: 'var(--color-secondary)' }}>
                   Sponsorships
                 </span>
               </div>
@@ -414,7 +414,7 @@ export default function Projects() {
               <button 
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors`}
+                className={`px-4 py-2 rounded-none text-sm font-medium transition-colors`}
                 style={{
                   backgroundColor: selectedCategory === category ? 'var(--color-primary)' : 'var(--color-light)',
                   color: selectedCategory === category ? '#ffffff' : 'var(--color-primary)',
@@ -430,7 +430,7 @@ export default function Projects() {
             {getFilteredSkills().map((skill, index) => (
               <div 
                 key={index}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-center transition-colors border"
+                className="px-3 py-2 rounded-none text-sm font-medium text-center transition-colors border"
                 style={{ fontFamily: 'Sora, system-ui, sans-serif', backgroundColor: 'var(--color-light)', color: 'var(--color-primary)', borderColor: 'var(--color-secondary)' }}
               >
                 {skill}
@@ -448,7 +448,7 @@ export default function Projects() {
             <span className="text-[var(--color-dark)] font-bold">recognition</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="recognition-card n1 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+            <div className="recognition-card n1 rounded-none border-2 p-6 hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 Loran Scholar Finalist
               </h3>
@@ -461,7 +461,7 @@ export default function Projects() {
                 </p>
               </div>
             </div>
-            <div className="recognition-card n2 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+            <div className="recognition-card n2 rounded-none border-2 p-6 hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 BMO200 William A. Downe Scholar
               </h3>
@@ -474,7 +474,7 @@ export default function Projects() {
                 </p>
               </div>
             </div>
-            <div className="recognition-card n3 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+            <div className="recognition-card n3 rounded-none border-2 p-6 hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 EGOI Canadian National Training Camp Qualifier
               </h3>
@@ -487,7 +487,7 @@ export default function Projects() {
                 </p>
               </div>
             </div>
-            <div className="recognition-card n4 rounded-lg border-2 p-6 hover:shadow-xl transition-all duration-300">
+            <div className="recognition-card n4 rounded-none border-2 p-6 hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
                 DECA ICDC - 7th Place Internationally
               </h3>

@@ -11,7 +11,7 @@ const sampleBooks: Book[] = [
     title: "Crying in H Mart",
     author: "Michelle Zauner",
     genres: ["History", "Non-Fiction"],
-    topics: ["Growth", "Culture", "Autobiography"],
+    topics: ["Growth", "Culture", "Grief"],
     rating: 5,
     lastRead: "2025-11-05",
     eli5: "Crying in H Mart is a true story about Michelle Zauner losing her mom to cancer and how deeply she misses her. She remembers her mom through cooking Korean food, visiting the grocery store H Mart, and practicing family traditions. The book explores love, grief, family, and figuring out who you are when someone you love is gone.",
