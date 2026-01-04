@@ -60,7 +60,7 @@ export default function Home() {
               <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">01</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  CS @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
+                  CS @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
                 </p>
               </div>
             </div>
@@ -68,7 +68,7 @@ export default function Home() {
               <span className="text-[var(--color-secondary)] text-sm mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <span className="underline underline-offset-4 hover:bg-[var(--color-accent)] transition-all duration-300 rounded-sm cursor-default highlight-reveal">competitive programming - link pdf</span> + going down rabbit holes about different ideas at 3AM
+                  Spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down rabbit holes about random ideas at 3AM
                 </p>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function Home() {
               <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">01</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  developed tools that distribute multilingual content for some of my favourite creators @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Aview International</a>
+                  developed tools that distribute multilingual content for some of my favourite creators @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Aview International</a>
                 </p>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function Home() {
               <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  was a future tech intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Nokia</a> on their NSP Analytics team
+                  was a future tech intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Nokia</a> on their NSP Analytics team
                 </p>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function Home() {
               <span className="text-[var(--color-primary)] text-sm mt-1 font-mono font-semibold">03</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  built a biodegradable hydrogel using sugarcane bagasse to help revitalize degraded soil; created to find an alternative to chemical fertilizers. [backed by Emergent Ventures] (link this to marignal blog)
+                  built a biodegradable hydrogel using sugarcane bagasse to help revitalize degraded soil; created to find an alternative to chemical fertilizers <a href="https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">[backed by Emergent Ventures]</a>.
                 </p>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function Home() {
               <span className="text-[var(--color-secondary)] text-sm mt-1 font-mono font-semibold">04</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Target Alpha</a>. collectively reached 10,000 high school students & partnered with TD, Binance, + more!
+                  led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Target Alpha</a>. collectively reached 10,000 high school students & partnered with TD, Binance, + more!
                 </p>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
               <span className="text-[var(--color-light)] text-sm mt-1 font-mono font-semibold">05</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  photographed objects in daily life + awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Scholastic Art & Writing Awards</a>
+                  photographed objects in daily life + awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Scholastic Art & Writing Awards</a>
                 </p>
               </div>
             </div>
