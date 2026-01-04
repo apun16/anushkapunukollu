@@ -11,7 +11,7 @@ export default function Home() {
         <div className="mb-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
             <h1 className="text-5xl font-light leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
-              Hi I&apos;m <span className="text-[var(--color-dark)] font-bold">Anushka.</span>
+              Hi, I&apos;m <span className="text-[var(--color-dark)] font-bold">Anushka.</span>
             </h1>
             <div className="flex gap-3 mt-4 sm:mt-0">
               <a 
@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
-            I&apos;m a student at UWaterloo building at the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
+              Student at UWaterloo exploring the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export default function Home() {
               <span className="text-[var(--color-secondary)] text-sm mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  Spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down rabbit holes about random ideas at 3AM
+                  spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down rabbit holes about random ideas at 3AM
                 </p>
               </div>
             </div>
