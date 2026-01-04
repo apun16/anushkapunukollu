@@ -13,23 +13,26 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
   return (
     <>
-      <nav className="max-w-4xl w-full mx-auto mb-8">
-        <div className="flex justify-between items-center">
+      <nav className="max-w-4xl w-full mx-auto mb-8 px-4">
+        <div className="flex justify-between items-center flex-nowrap">
+          {/* Logo */}
           <Link 
             href="/" 
-            className={`text-xl transition-all duration-200 ${
+            className={`transition-all duration-200 whitespace-nowrap ${
               currentPage === 'home' || currentPage === undefined
                 ? 'underline underline-offset-4 text-[var(--color-primary)]' 
                 : 'hover:underline underline-offset-4 text-[var(--color-primary)] hover:text-[var(--color-light)]'
             }`}
-            style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
+            style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif', fontSize: '1.25rem' }} // 20px
           >
             anushka
           </Link>
-          <div className="flex gap-6 items-center">
+
+          {/* Links + Command Button */}
+          <div className="flex items-center gap-4 sm:gap-6 min-w-0">
             <Link 
               href="/portfolio" 
-              className={`text-xl transition-all duration-200 ${
+              className={`transition-all duration-200 whitespace-nowrap text-base sm:text-lg ${
                 currentPage === 'portfolio' 
                   ? 'underline underline-offset-4 text-[var(--color-primary)]' 
                   : 'hover:underline underline-offset-4 text-[var(--color-foreground)] hover:text-[var(--color-light)]'
@@ -40,7 +43,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
             </Link>
             <Link 
               href="/bookshelf" 
-              className={`text-xl transition-all duration-200 ${
+              className={`transition-all duration-200 whitespace-nowrap text-base sm:text-lg ${
                 currentPage === 'bookshelf' 
                   ? 'underline underline-offset-4 text-[var(--color-primary)]' 
                   : 'hover:underline underline-offset-4 text-[var(--color-foreground)] hover:text-[var(--color-light)]'
@@ -49,8 +52,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
             >
               bookshelf
             </Link>
+
             <button
-              className="flex items-center gap-1 px-3 py-1.5 text-sm border border-[var(--color-border)] rounded-lg hover:bg-[var(--color-background-light)] transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-sm sm:text-base border border-[var(--color-border)] rounded-lg hover:bg-[var(--color-background-light)] transition-colors"
               onClick={() => {
                 const event = new KeyboardEvent('keydown', {
                   key: 'k',
@@ -61,9 +65,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
               }}
               style={{ color: 'var(--color-foreground)' }}
             >
-              <span className="text-[var(--color-foreground)]">⌘</span>
-              <span className="text-[var(--color-foreground)]">+</span>
-              <span className="text-[var(--color-foreground)]">K</span>
+              <span>⌘</span>
+              <span>+</span>
+              <span>K</span>
             </button>
           </div>
         </div>

@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-lg leading-relaxed max-w-2xl" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
-            I&apos;m a student at UWaterloo building in the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
+            I&apos;m a student at UWaterloo building at the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
           </p>
         </div>
 
