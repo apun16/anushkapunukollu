@@ -19,12 +19,12 @@ interface ThemeColors {
 
 const themes: Record<Theme, ThemeColors> = {
   mediterranean: {
-    primary: " #81244E",
-    secondary: " #D69E2E",
-    accent: " #99BE99",
+    primary: " #851c4bff",
+    secondary: " #daa131ff",
+    accent: " #8dad8dff",
     light: " #E8E9F6",
-    dark: " #2C5282",
-    background: " #FAF2E7",
+    dark: " #284e7dff",
+    background: " #fefefeff",
     backgroundLight: " #FFFFFF",
     foreground: " #2C5282",
     muted: " #D97BA6",

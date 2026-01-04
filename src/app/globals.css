@@ -61,19 +61,15 @@ body {
 }
 
 .recognition-card.n1 {
-  background: linear-gradient(to bottom right, var(--recog1-g1), var(--recog1-g2));
   border-color: var(--recog-border);
 }
 .recognition-card.n2 {
-  background: linear-gradient(to bottom right, var(--recog2-g1), var(--recog2-g2));
   border-color: var(--recog-border);
 }
 .recognition-card.n3 {
-  background: linear-gradient(to bottom right, var(--recog3-g1), var(--recog3-g2));
   border-color: var(--recog-border);
 }
 .recognition-card.n4 {
-  background: linear-gradient(to bottom right, var(--recog4-g1), var(--recog4-g2));
   border-color: var(--recog-border);
 }
 .geometric-pattern {
