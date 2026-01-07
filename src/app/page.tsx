@@ -60,7 +60,7 @@ export default function Home() {
               <span className="text-[var(--color-accent)] text-sm mt-1 font-mono font-semibold">01</span>
               <div>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  CS @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
+                  Computer Science @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
                 </p>
               </div>
             </div>

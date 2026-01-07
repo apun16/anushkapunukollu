@@ -467,7 +467,7 @@ export default function Projects() {
               </h3>
               <div className="space-y-2">
                 <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
-                  Awarded $10,000 in recognition of exceptional performance
+                  Awarded in recognition of exceptional performance
                 </p>
                 <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   Excellence in <span className="font-semibold">academic achievement, leadership, and community contributions</span>
@@ -480,7 +480,7 @@ export default function Projects() {
               </h3>
               <div className="space-y-2">
                 <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
-                  Top 10 female competitive programmers out of 10,000+ participants
+                  Top 10 female competitive programmers out of 4,000+ participants
                 </p>
                 <p className="text-sm leading-relaxed italic" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-muted)' }}>
                   Invitational camp based on <span className="font-semibold">Canadian Computing Contest scores</span>

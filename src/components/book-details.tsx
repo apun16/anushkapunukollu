@@ -11,7 +11,7 @@ export interface Book {
   topics: string[];
   rating: number;
   lastRead: string;
-  eli5: string;
+  tldr: string;
   annotations: string;
   imageSrc?: string;
   pages?: number;
@@ -218,7 +218,7 @@ export default function BookDetailPanel({
               </div>
             </div>
           )}
-          {book.eli5 && book.eli5.trim() && (
+          {book.tldr && book.tldr.trim() && (
             <div>
               <h3
                 className="text-sm font-bold mb-2"
@@ -227,7 +227,7 @@ export default function BookDetailPanel({
                   color: 'var(--color-dark, #2d2d2d)',
                 }}
               >
-                ELI5
+                TDLR
               </h3>
               <div
                 className="text-sm leading-snug whitespace-pre-wrap"
@@ -236,7 +236,7 @@ export default function BookDetailPanel({
                   color: 'var(--color-foreground, #2d2d2d)',
                 }}
               >
-                {book.eli5}
+                {book.tldr}
               </div>
             </div>
           )}
