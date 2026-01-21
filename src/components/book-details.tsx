@@ -240,7 +240,7 @@ export default function BookDetailPanel({
               </div>
             </div>
           )}
-          {book.annotations && book.annotations.trim() && (
+          {/* {book.annotations && book.annotations.trim() && (
             <div>
               <h3
                 className="text-sm font-bold mb-2"
@@ -261,7 +261,7 @@ export default function BookDetailPanel({
                 {book.annotations}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </>

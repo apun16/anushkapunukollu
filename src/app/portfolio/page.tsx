@@ -19,31 +19,49 @@ interface Project {
 const sampleProjects: Project[] = [
   {
     id: 1,
+    title: "6° Degrees",
+    description: "6° Degrees is a semantic word connection game where players find paths between any two words in six steps or less. Reached 100+ players and 500+ plays.",
+    languages: ["Sentence Transformers", "PyTorch", "Python", "TypeScript", "React", "Docker", "Jest", "pytest"],
+    imageSrc: "/projects/6Degrees.png",
+    githubUrl: "https://github.com/apun16/6-Degrees/",
+    liveUrl: "https://www.play6degrees.com/"
+  },
+  {
+    id: 2,
+    title: "LandLock",
+    description: "LandLock is an AI-powered land risk intelligence platform that helps people make informed decisions about where to live, build, and insure. Built in 36 hours for UofT Hacks.",
+    languages: ["Python", "FastAPI", "LangGraph", "CrewAI", "Leaflet.js", "TypeScript", "React", "BeautifulSoup"],
+    imageSrc: "/projects/LandLock.png",
+    githubUrl: "https://github.com/apun16/landlock",
+    liveUrl: "https://devpost.com/software/landlock"
+  },
+  {
+    id: 3,
     title: "Go Neural Network",
-    description: "A full Go-playing AI integrating a dual-head CNN with residual blocks and Monte Carlo Tree Search (MCTS), inspired by AlphaGo. Includes a complete Go engine with rules validation, including ko rule and capture detection, and a CLI for playing against the trained AI.",
+    description: "A full Go-playing AI integrating a dual-head CNN with residual blocks and Monte Carlo Tree Search (MCTS), inspired by AlphaGo. Includes a complete Go engine, including ko rule and capture detection, and a CLI for playing against the trained AI.",
     languages: ["Python", "PyTorch", "NumPy", "Monte Carlo Tree Search"],
     imageSrc: "/projects/GoNeuralNetwork.png",
     githubUrl: "https://github.com/apun16/Go-Neural-Network"
   },
   {
-    id: 2,
+    id: 4,
     title: "FakeSeek",
-    description: "A deepfake detection tool that helps users spot AI-generated content before it spreads and find if their identity has been compromised. Utilizes Gemini API to analyze images and text, and BeautifulSoup to scrape social media content. Built in 36 hours for TechNova 2025 & placed 3rd overall.",
-    languages: ["TypeScript", "Python", "GeminiAPI", "React", "MongoDB", "TailwindCSS"],
+    description: "A deepfake detection tool that helps users spot AI-generated content and find if their identity has been compromised via image analysis and web scraping. Built in 36 hours at TechNova 2025 & placed 3rd overall.",
+    languages: ["TypeScript", "Python", "GeminiAPI", "React", "MongoDB", "TailwindCSS", "BeautifulSoup", "Auth0"],
     imageSrc: "/projects/fakeseek_logo.png",
     githubUrl: "https://github.com/apun16/FakeSeek.",
     liveUrl: "https://devpost.com/software/fakeseek"
   },
   {
-    id: 3,
+    id: 5,
     title: "SucroSoil",
-    description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved 94% accuracy in optimizing hydrogel performance; secured $30K+ funding from Emergent Ventures and other firms to support R&D.",
-    languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Experimentation"],
+    description: "SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved a 0.62 R² score; secured $30K+ funding from Emergent Ventures, 1517 Fund and other firms to support R&D.",
+    languages: ["Material Science", "Hydrogels", "Python", "scikit-learn", "Financial Modeling"],
     imageSrc: "/projects/SucroSoil_Thumbnail.png",
     liveUrl: "https://devpost.com/software/sucrosoil"
   },
   {
-    id: 4,
+    id: 6,
     title: "ConnectED",
     description: "ConnectED is a platform that helps FGLI (First-Generation Low-Income) students access higher education resources. Designed a Tinder-style scholarship feed with personalized recommendations in Figma, a financial aid calculator, and a mentor matching system using NLP.",
     languages: ["Python", "Figma", "UI/UX Design", "NLTK", "Scrapy", "Google APIs"],
@@ -52,7 +70,7 @@ const sampleProjects: Project[] = [
     liveUrl: "https://devpost.com/software/connected-ie5ghl"
   },
   {
-    id: 5,
+    id: 7,
     title: "Flux",
     description: "Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions. Placed Top 7 @ Moonshot Pirates Climate Challenge.",
     languages: ["Python", "Drones", "LiDAR", "Machine Learning"],
@@ -60,7 +78,7 @@ const sampleProjects: Project[] = [
     liveUrl: "https://app.moonshotpirates.com/vote/flux-1"
   },
   {
-    id: 6,
+    id: 8,
     title: "SeaBloom",
     description: "SeaBloom is a coral reef monitoring system that uses CNNs to classify bleached vs unbleached coral from images with 98% accuracy. The model uses PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to improve the training process. Placed Top 10 @ NFTE World Series of Innovation BMO Challenge.",
     languages: ["Python", "PyTorch", "Computer Vision", "Figma"],

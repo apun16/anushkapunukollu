@@ -6,7 +6,7 @@ export default function Footer() {
       <a
         style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}
       >
-        last updated: january 4th, 2026 🫶🏼
+        last updated: january 20th, 2026 🫶🏼
       </a>
     </footer>
   );
