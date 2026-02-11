@@ -8,6 +8,8 @@ interface NavbarProps {
   currentPage?: string;
 }
 
+import { Rabbit } from "lucide-react";
+
 export default function Navbar({ currentPage }: NavbarProps) {
   useTheme();
 
@@ -15,7 +17,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
     <>
       <nav className="max-w-4xl w-full mx-auto mb-8 px-4">
         <div className="flex justify-between items-center flex-nowrap">
-          {/* Logo */}
           <Link 
             href="/" 
             className={`transition-all duration-200 whitespace-nowrap ${
@@ -28,12 +29,11 @@ export default function Navbar({ currentPage }: NavbarProps) {
             anushka
           </Link>
 
-          {/* Links + Command Button */}
           <div className="flex items-center gap-4 sm:gap-6 min-w-0">
             <Link 
               href="/portfolio" 
               className={`transition-all duration-200 whitespace-nowrap text-base sm:text-lg ${
-                currentPage === 'portfolio' 
+                currentPage === 'experiences' 
                   ? 'underline underline-offset-4 text-[var(--color-primary)]' 
                   : 'hover:underline underline-offset-4 text-[var(--color-foreground)] hover:text-[var(--color-light)]'
               }`}
@@ -51,6 +51,17 @@ export default function Navbar({ currentPage }: NavbarProps) {
               style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
             >
               bookshelf
+            </Link>
+            <Link 
+              href="/rabbit-holes" 
+              className={`transition-all duration-200 whitespace-nowrap text-base sm:text-lg ${
+                currentPage === 'rabbit-holes' 
+                  ? 'underline underline-offset-4 text-[var(--color-primary)]' 
+                  : 'hover:underline underline-offset-4 text-[var(--color-foreground)] hover:text-[var(--color-light)]'
+              }`}
+              style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
+            >
+              <Rabbit className="mr-2 h-5 w-5" />
             </Link>
 
             <button
