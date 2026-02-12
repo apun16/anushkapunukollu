@@ -18,7 +18,6 @@ export default function Home() {
               Student at UWaterloo exploring the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
           </p>
         </div>
-
         <div className="mb-4">
           <h2 className="text-lg font-bold mb-2" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif' }}>
             <span className="text-[var(--color-primary)]">CURRENTLY</span>
