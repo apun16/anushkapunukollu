@@ -22,6 +22,14 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="CS Webring"
             className="inline-block w-6 h-6 shrink-0 opacity-90"
+            style={{
+              maskImage: "url(https://cs.uwatering.com/icon.black.svg)",
+              WebkitMaskImage: "url(https://cs.uwatering.com/icon.black.svg)",
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
+              backgroundColor: "var(--color-primary)",
+            }}
           >
             <span className="sr-only">CS Webring</span>
           </a>
