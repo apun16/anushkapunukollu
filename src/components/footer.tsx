@@ -1,7 +1,6 @@
 export default function Footer() {
   const labelClass =
     "inline-block max-w-0 overflow-hidden whitespace-nowrap opacity-0 -translate-x-1 transition-[max-width,opacity,transform] duration-1000 ease-[cubic-bezier(0.1,0,0.1,1)] group-hover:max-w-[100px] group-hover:opacity-100 group-hover:translate-x-0";
-
   return (
     <footer
       className="w-full flex flex-col items-center leading-tight"
@@ -76,7 +75,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <span className="text-sm mt-3 opacity-80">last updated: february 12th, 2026 🫶🏼 </span>
+      <span className="text-sm mt-3.5 opacity-80">last updated: february 12th, 2026 🫶🏼 </span>
     </footer>
   );
 }
