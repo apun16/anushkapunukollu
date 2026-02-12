@@ -7,7 +7,6 @@ export default function Footer() {
       className="w-full flex flex-col items-center leading-tight"
       style={{ fontFamily: "Sora, system-ui, sans-serif", color: "var(--color-foreground)" }}
     >
-      <span className="text-sm mt-1 mb-3 opacity-80">last updated: february 12th, 2026 🫶🏼 </span>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
       <a
           href="https://linkedin.com/in/anushkapunukollu"
@@ -77,6 +76,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      <span className="text-sm mt-3 opacity-80">last updated: february 12th, 2026 🫶🏼 </span>
     </footer>
   );
 }
