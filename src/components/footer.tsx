@@ -45,13 +45,13 @@ export default function Footer() {
         </a>
         <div className="flex items-center gap-2 text-[var(--color-primary)]">
           <a
-            href={`https://cs.uwatering.com/#https://anushkapunukollu.com/?nav=prev`}
+            href={`https://cs.uwatering.com/#https://anushkapunukollu.com?nav=prev`}
             className="hover:underline"
           >
             ←
           </a>
           <a
-            href={`https://cs.uwatering.com/#https://anushkapunukollu.com/`}
+            href={`https://cs.uwatering.com/#https://anushkapunukollu.com`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="CS Webring"
@@ -68,7 +68,7 @@ export default function Footer() {
             <span className="sr-only">CS Webring</span>
           </a>
           <a
-            href={`https://cs.uwatering.com/#https://anushkapunukollu.com/?nav=next`}
+            href={`https://cs.uwatering.com/#https://anushkapunukollu.com?nav=next`}
             className="hover:underline"
           >
             →
