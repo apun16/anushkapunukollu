@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
@@ -36,7 +35,7 @@ export default function Home() {
               <span className="text-[var(--color-secondary)] text-base mt-1 font-mono font-semibold">02</span>
               <div>
                 <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
-                  spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down <Link href="/rabbit-holes" className="rabbit-hole-link rounded-sm px-0.5">rabbit holes</Link> about random ideas at 3AM
+                  spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down rabbit holes about random ideas at 3AM
                 </p>
               </div>
             </div>
