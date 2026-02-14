@@ -7,6 +7,11 @@ import {
   Briefcase,
   BookOpen,
   Rabbit,
+  Linkedin,
+  Github,
+  FileText,
+  Mail,
+  User,
 } from "lucide-react"
 
 import {
@@ -116,6 +121,28 @@ export function CommandMenu() {
   return (
     <>
       <CommandDialog open={open} onOpenChange={setOpen}>
+        <div className="flex items-center border-b py-3 pl-4 pr-3">
+          <div className="relative mr-2.5 flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden" aria-hidden>
+            <img
+              src="/profile.jpg"
+              alt="Profile"
+              className="h-5 w-5 object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = "none"
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement
+                if (fallback) fallback.style.display = "block"
+              }}
+            />
+            <User
+              className="h-5 w-5 hidden"
+              style={{ color: "var(--color-dark)" }}
+              strokeWidth={2.25}
+            />
+          </div>
+          <span className="text-base font-normal" style={{ color: "var(--color-primary)" }}>
+            All about me!
+          </span>
+        </div>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -142,7 +169,26 @@ export function CommandMenu() {
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Theme">
+          <CommandGroup heading="Links">
+            <CommandItem onSelect={() => runCommand(() => { window.open("https://linkedin.com/in/anushkapunukollu", "_blank"); setOpen(false); })}>
+              <Linkedin className="mr-2 h-4 w-4" />
+              <span>LinkedIn</span>
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => { window.open("https://github.com/apun16", "_blank"); setOpen(false); })}>
+              <Github className="mr-2 h-4 w-4" />
+              <span>GitHub</span>
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => { window.open("/resume.pdf", "_blank"); setOpen(false); })}>
+              <FileText className="mr-2 h-4 w-4" />
+              <span>Resume</span>
+            </CommandItem>
+            <CommandItem onSelect={() => runCommand(() => { window.location.href = "mailto:anushka.punukollu@uwaterloo.ca"; setOpen(false); })}>
+              <Mail className="mr-2 h-4 w-4" />
+              <span>Send email</span>
+            </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Settings">
             {(Object.keys(themeConfig) as Theme[]).map((themeKey) => {
               const config = themeConfig[themeKey]
               const isActive = theme === themeKey
@@ -166,18 +212,6 @@ export function CommandMenu() {
                 </CommandItem>
               )
             })}
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="External Links">
-            <CommandItem onSelect={() => runCommand(() => { window.open("https://linkedin.com/in/anushkapunukollu", "_blank"); setOpen(false); })}>
-              <span>LinkedIn</span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => { window.open("https://github.com/apun16", "_blank"); setOpen(false); })}>
-              <span>GitHub</span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => { window.open("/resume.pdf", "_blank"); setOpen(false); })}>
-              <span>Resume</span>
-            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>

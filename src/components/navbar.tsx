@@ -65,7 +65,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
             </Link>
 
             <button
-              className="flex items-center gap-1 px-2 py-1 text-sm sm:text-base md:text-[1.25rem] border border-[var(--color-border)] rounded-lg hover:bg-[var(--color-background-light)] transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-sm sm:text-base md:text-[1.25rem] border border-[var(--color-border)] rounded-lg transition-all duration-200 ease-out hover:scale-105 hover:bg-[var(--color-background-light)] active:scale-[0.98]"
               onClick={() => {
                 const event = new KeyboardEvent('keydown', {
                   key: 'k',
