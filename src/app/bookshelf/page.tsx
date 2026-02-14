@@ -310,7 +310,7 @@ export default function Bookshelf() {
           <h1 className="text-5xl font-light mb-4 leading-tight" style={{ fontFamily: 'Satoshi-Light, Satoshi-Variable, system-ui, sans-serif' }}>
             <span className="text-[var(--color-dark)] font-bold">bookshelf</span>
           </h1>
-          <p className="text-lg text-gray-700 leading-relaxed max-w-2xl mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
+          <p className="text-lg text-gray-700 leading-relaxed w-full mb-4" style={{ fontFamily: 'Sora, system-ui, sans-serif' }}>
             For a long time I&apos;ve been keeping a ledger of every book/article I&apos;ve owned & read along with a short reflection on it. I think this quote best describes why I love to read:
           </p>
           
