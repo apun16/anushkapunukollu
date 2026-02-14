@@ -303,7 +303,7 @@ export default function Bookshelf() {
 
   return (
     <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
-      <main className="max-w-3xl mx-auto px-6 py-8">
+      <main className="max-w-5xl mx-auto px-6 py-8">
         <Navbar currentPage="bookshelf" />
         
         <div className="mb-8">
