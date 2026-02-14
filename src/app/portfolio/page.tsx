@@ -113,7 +113,7 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
-      <main className="max-w-3xl mx-auto px-6 py-8">
+      <main className="max-w-5xl mx-auto px-6 py-8">
         <Navbar currentPage="portfolio" />
         
         <div className="mb-8">
@@ -494,7 +494,7 @@ export default function Projects() {
             </div>
             <div className="recognition-card n3 rounded-none border-2 p-6 hover:shadow-xl transition-all duration-300">
               <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Satoshi-Bold, Satoshi-Variable, system-ui, sans-serif', color: 'var(--color-primary)' }}>
-                EGOI Canadian National Training Camp Qualifier
+                EGOI National Training Camp Qualifier
               </h3>
               <div className="space-y-2">
                 <p className="text-lg leading-relaxed" style={{ fontFamily: 'Sora, system-ui, sans-serif', color: 'var(--color-foreground)' }}>
