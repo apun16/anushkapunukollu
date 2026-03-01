@@ -227,7 +227,7 @@ export default function BookDetailPanel({
                   color: 'var(--color-dark, #2d2d2d)',
                 }}
               >
-                TDLR
+                TL;DR
               </h3>
               <div
                 className="text-sm leading-snug whitespace-pre-wrap"
