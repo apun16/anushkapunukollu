@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+    <div className="min-h-screen">
       <main className="max-w-5xl mx-auto px-6 py-8">
         <Navbar currentPage="home" />
         

@@ -112,7 +112,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen geometric-pattern" style={{ backgroundColor: 'var(--color-background, #ffffff)' }}>
+    <div className="min-h-screen">
       <main className="max-w-5xl mx-auto px-6 py-8">
         <Navbar currentPage="portfolio" />
         

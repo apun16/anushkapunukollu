@@ -24,7 +24,10 @@
 }
 
 body {
-  background-color: var(--color-background, #fafafa);
+  background-color: var(--color-background, #ebe8e2);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 42%),
+    radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.04) 0%, transparent 55%);
   color: var(--color-foreground, #000000);
   font-family: "Satoshi-Variable", "Satoshi-Regular", "Satoshi-Medium", "Satoshi-Bold", "Satoshi-Black", system-ui, -apple-system, sans-serif;
 }
@@ -72,25 +75,6 @@ body {
 .recognition-card.n4 {
   border-color: var(--recog-border);
 }
-.geometric-pattern {
-  position: relative;
-  background-image: 
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 20.5px,
-      rgba(0, 0, 0, 0.02) 20px,
-      rgba(0, 0, 0, 0.02) 22px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 20.5px,
-      rgba(0, 0, 0, 0.02) 20px,
-      rgba(0, 0, 0, 0.02) 22px
-    );
-}
-
 @keyframes rabbit-hole-circle {
   0% { transform: translate(0, 0); }
   25% { transform: translate(2px, -2px); }
@@ -105,6 +89,134 @@ body {
   text-underline-offset: 0.375rem;
   animation: rabbit-hole-circle 3s ease-in-out infinite;
 }
+
+.canvas-viewport {
+  overflow: hidden;
+  cursor: grab;
+  border-radius: 14px;
+}
+.canvas-viewport:active { cursor: grabbing; }
+
+.pinboard-surface {
+  --pinboard-mid: #b89262;
+  --pinboard-deep: #9e7a4f;
+  background-color: var(--pinboard-mid);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    radial-gradient(ellipse 140% 100% at 25% 15%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 70% at 85% 75%, rgba(35, 22, 10, 0.08) 0%, transparent 50%),
+    linear-gradient(165deg, var(--pinboard-mid) 0%, var(--pinboard-deep) 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -3px 18px rgba(25, 15, 8, 0.12),
+    0 10px 36px rgba(25, 20, 15, 0.12);
+  border: 1px solid rgba(55, 36, 20, 0.2);
+  min-height: 22rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.sketch-card {
+  position: relative;
+  border: 1.5px solid var(--color-border, #e5e7eb);
+  border-radius: 3px 12px 4px 14px;
+  transition: box-shadow 0.2s ease;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.sketch-card:active { cursor: grabbing; }
+.sketch-card * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sketch-card-clip {
+  overflow: hidden;
+  border-radius: inherit;
+}
+.sketch-card-clip--fill {
+  height: 100%;
+  min-height: 0;
+}
+
+.card-tape {
+  position: absolute;
+  height: 24px;
+  top: -12px;
+  opacity: 0.72;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 1px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.card-pin {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+.corner-handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+  background: var(--color-background, #fff);
+  border: 1.5px solid var(--color-primary, #543787);
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: auto;
+  touch-action: none;
+}
+.sketch-card:hover .corner-handle,
+.sketch-card--active .corner-handle { opacity: 1; }
+.corner-handle.tl { top: -4px; left: -4px; cursor: nwse-resize; }
+.corner-handle.tr { top: -4px; right: -4px; cursor: nesw-resize; }
+.corner-handle.bl { bottom: -4px; left: -4px; cursor: nesw-resize; }
+.corner-handle.br { bottom: -4px; right: -4px; cursor: nwse-resize; }
+
+.sketch-card:hover,
+.sketch-card--active {
+  outline: 1.5px solid var(--color-primary, #543787);
+  outline-offset: 1px;
+}
+
+.rotate-handle {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 0.15s;
+  cursor: alias;
+  pointer-events: auto;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sketch-card:hover .rotate-handle,
+.sketch-card--active .rotate-handle { opacity: 0.6; }
+.rotate-handle:hover { opacity: 1 !important; }
 
 .command-dialog-content {
   position: fixed !important;
