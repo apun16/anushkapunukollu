@@ -7,8 +7,8 @@ import Footer from '@/components/footer';
 
 const scribble = Caveat({ subsets: ['latin'], weight: ['600'] });
 
-const CANVAS_W = 9600;
-const CANVAS_H = 9600;
+const CANVAS_W = 7600;
+const CANVAS_H = 7600;
 const CARD_OX = 4000;
 const CARD_OY = 4100;
 const SCRIBBLE_LEFT = CARD_OX + 650;
@@ -409,117 +409,120 @@ export default function RabbitHoles() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="max-w-4xl mx-auto px-6 pt-8 pb-4 w-full">
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: 'var(--color-background, #ffffff)' }}
+    >
+      <main className="max-w-5xl mx-auto px-6 py-8 w-full">
         <Navbar currentPage="rabbit-holes" />
-        <div className="mb-4">
+        <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2 leading-tight" style={{ fontFamily: H, color: 'var(--color-dark)' }}>
             rabbit holes
           </h1>
-          <p className="text-sm leading-relaxed max-w-lg" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
-            rabbit holes!! {' '}
+          <p className="text-sm leading-relaxed w-full mb-3" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
+            rabbit holes!!{' '}
             <kbd className="px-1 py-0.5 rounded border border-[var(--color-border)] text-[0.7rem]">Ctrl</kbd>{' '}
             + .
           </p>
         </div>
-      </div>
 
-      <div
-        ref={viewportRef}
-        className="canvas-viewport pinboard-surface mx-auto mb-6 relative"
-        style={{ width: '100%', maxWidth: '56rem', height: '68vh', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}
-        onPointerDown={onBgDown}
-        onPointerMove={onBgMove}
-        onPointerUp={onBgUp}
-        onPointerLeave={onBgUp}
-      >
         <div
-          className="rh-zoom-ui absolute top-2 right-2 z-50 flex items-center gap-1 rounded-md border px-1 py-0.5 text-xs"
-          style={{
-            fontFamily: B,
-            backgroundColor: 'var(--color-background, #fff)',
-            borderColor: 'var(--color-border)',
-            color: 'var(--color-foreground)',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-            pointerEvents: 'auto',
-          }}
-          onPointerDown={(e) => e.stopPropagation()}
+          ref={viewportRef}
+          className="canvas-viewport pinboard-surface w-full mb-6 relative"
+          style={{ height: '68vh' }}
+          onPointerDown={onBgDown}
+          onPointerMove={onBgMove}
+          onPointerUp={onBgUp}
+          onPointerLeave={onBgUp}
         >
-          <button
-            type="button"
-            className="px-2 py-1 rounded hover:opacity-80"
-            aria-label="Zoom out"
+          <div
+            className="rh-zoom-ui absolute top-2 right-2 z-50 flex items-center gap-1 rounded-md border px-1 py-0.5 text-xs"
+            style={{
+              fontFamily: B,
+              backgroundColor: 'var(--color-background, #fff)',
+              borderColor: 'var(--color-border)',
+              color: 'var(--color-foreground)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+              pointerEvents: 'auto',
+            }}
             onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              applyZoom(zoom / 1.15);
+          >
+            <button
+              type="button"
+              className="px-2 py-1 rounded hover:opacity-80"
+              aria-label="Zoom out"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                applyZoom(zoom / 1.15);
+              }}
+            >
+              −
+            </button>
+            <span className="min-w-[3rem] text-center tabular-nums opacity-80">{Math.round(zoom * 100)}%</span>
+            <button
+              type="button"
+              className="px-2 py-1 rounded hover:opacity-80 disabled:opacity-35 disabled:pointer-events-none"
+              aria-label="Zoom in"
+              disabled={zoom >= MAX_ZOOM - 1e-6}
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                applyZoom(zoom * 1.15);
+              }}
+            >
+              +
+            </button>
+            <button
+              type="button"
+              className="px-1.5 py-1 ml-0.5 rounded text-[0.65rem] hover:opacity-80"
+              aria-label="Reset zoom"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                setZoom(1);
+                if (viewportRef.current) {
+                  const el = viewportRef.current;
+                  const vw = el.offsetWidth;
+                  const vh = el.offsetHeight;
+                  const focusX = CARD_OX + 450;
+                  const focusY = CARD_OY + 520;
+                  setPan(clampPanPair(vw / 2 - focusX, vh / 2 - focusY, 1));
+                }
+              }}
+            >
+              100%
+            </button>
+          </div>
+          <div
+            style={{
+              position: 'relative',
+              width: CANVAS_W,
+              height: CANVAS_H,
+              transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+              transformOrigin: '0 0',
+              willChange: 'transform',
+              pointerEvents: 'none',
             }}
           >
-            −
-          </button>
-          <span className="min-w-[3rem] text-center tabular-nums opacity-80">{Math.round(zoom * 100)}%</span>
-          <button
-            type="button"
-            className="px-2 py-1 rounded hover:opacity-80 disabled:opacity-35 disabled:pointer-events-none"
-            aria-label="Zoom in"
-            disabled={zoom >= MAX_ZOOM - 1e-6}
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              applyZoom(zoom * 1.15);
-            }}
-          >
-            +
-          </button>
-          <button
-            type="button"
-            className="px-1.5 py-1 ml-0.5 rounded text-[0.65rem] hover:opacity-80"
-            aria-label="Reset zoom"
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              setZoom(1);
-              if (viewportRef.current) {
-                const el = viewportRef.current;
-                const vw = el.offsetWidth;
-                const vh = el.offsetHeight;
-                const focusX = CARD_OX + 450;
-                const focusY = CARD_OY + 520;
-                setPan(clampPanPair(vw / 2 - focusX, vh / 2 - focusY, 1));
-              }
-            }}
-          >
-            100%
-          </button>
+            <ExploreScribbleHint />
+            {cards.map((card) => (
+              <InteractiveCard
+                key={card.id}
+                card={card}
+                stackZ={zMap[card.id]}
+                bringToFront={() => bringToFront(card.id)}
+                zoom={zoom}
+              />
+            ))}
+          </div>
         </div>
-        <div
-          style={{
-            position: 'relative',
-            width: CANVAS_W,
-            height: CANVAS_H,
-            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
-            transformOrigin: '0 0',
-            willChange: 'transform',
-            pointerEvents: 'none',
-          }}
-        >
-          <ExploreScribbleHint />
-          {cards.map((card) => (
-            <InteractiveCard
-              key={card.id}
-              card={card}
-              stackZ={zMap[card.id]}
-              bringToFront={() => bringToFront(card.id)}
-              zoom={zoom}
-            />
-          ))}
-        </div>
-      </div>
 
-      <div className="max-w-4xl mx-auto px-6 pb-8 w-full">
-        <hr style={{ borderColor: 'var(--color-border)' }} className="mb-4" />
+        <div className="w-full mb-4">
+          <hr style={{ borderColor: 'var(--color-border)' }} />
+        </div>
         <Footer />
-      </div>
+      </main>
     </div>
   );
 }
