@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useCallback, useState, useEffect, useLayoutEffect } from 'react';
+import { useRef, useCallback, useState, useEffect, useLayoutEffect } from 'react';
 import { Caveat } from 'next/font/google';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -31,6 +31,53 @@ interface CardData {
   anchor: Anchor;
   anchorColor: string;
   children: React.ReactNode;
+}
+
+function RhTopic({
+  title,
+  body,
+  titleColor,
+  bodyColor,
+}: {
+  title: string;
+  body: string;
+  titleColor: string;
+  bodyColor: string;
+}) {
+  return (
+    <>
+      <p
+        className="text-[0.7rem] font-bold leading-tight mb-1.5 tracking-tight"
+        style={{ fontFamily: H, color: titleColor }}
+      >
+        {title}
+      </p>
+      <p className="text-[0.62rem] leading-relaxed" style={{ fontFamily: B, color: bodyColor }}>
+        {body}
+      </p>
+    </>
+  );
+}
+
+function RhQuote({
+  quote,
+  attribution,
+  textColor,
+}: {
+  quote: string;
+  attribution: string;
+  textColor: string;
+}) {
+  return (
+    <>
+      <p className="text-[0.62rem] italic leading-relaxed mb-1" style={{ fontFamily: B, color: textColor }}>
+        &ldquo;{quote}&rdquo;
+      </p>
+      <p className="text-[0.55rem] opacity-90" style={{ fontFamily: B, color: textColor }}>
+        — {attribution}
+      </p>
+    </>
+  );
 }
 
 function ExploreScribbleHint() {
@@ -88,10 +135,9 @@ function InteractiveCard({
 }) {
   const [pos, setPos] = useState({ x: card.x, y: card.y });
   const [size, setSize] = useState<{ w: number; h: number } | null>(null);
-  const [rotation, setRotation] = useState(card.rotate);
-  const [active, setActive] = useState<'drag' | 'resize' | 'rotate' | null>(null);
+  const [active, setActive] = useState<'drag' | 'resize' | null>(null);
   const cornerRef = useRef<Corner>('br');
-  const startRef = useRef({ px: 0, py: 0, ox: 0, oy: 0, w: 0, h: 0, rot: 0, cx: 0, cy: 0 });
+  const startRef = useRef({ px: 0, py: 0, ox: 0, oy: 0, w: 0, h: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
 
   const clamp = useCallback((nx: number, ny: number, cw?: number, ch?: number) => {
@@ -134,13 +180,6 @@ function InteractiveCard({
       nh = Math.max(40, nh);
       setSize({ w: nw, h: nh });
       if (c !== 'br') setPos(clamp(nox, noy, nw, nh));
-    } else if (active === 'rotate') {
-      const rect = cardRef.current!.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI);
-      const startAngle = Math.atan2(s.py - s.cy, s.px - s.cx) * (180 / Math.PI);
-      setRotation(s.rot + (angle - startAngle));
     }
   }, [active, clamp, zoom]);
 
@@ -155,15 +194,6 @@ function InteractiveCard({
     setActive('resize');
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
   }, [pos, bringToFront]);
-
-  const onRotateDown = useCallback((e: React.PointerEvent) => {
-    e.stopPropagation();
-    bringToFront();
-    const rect = cardRef.current!.getBoundingClientRect();
-    startRef.current = { ...startRef.current, px: e.clientX, py: e.clientY, rot: rotation, cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 };
-    setActive('rotate');
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  }, [rotation, bringToFront]);
 
   const isActive = active !== null;
 
@@ -180,7 +210,7 @@ function InteractiveCard({
         top: pos.y,
         width: size ? size.w : card.w,
         height: size ? size.h : undefined,
-        transform: `rotate(${rotation}deg)`,
+        transform: `rotate(${card.rotate}deg)`,
         borderColor: card.borderColor,
         backgroundColor: card.bg,
         zIndex: stackZ ?? 1,
@@ -197,12 +227,6 @@ function InteractiveCard({
       <div data-handle="1" className="corner-handle bl" onPointerDown={onResizeDown('bl')} onPointerMove={onPointerMove} onPointerUp={onPointerUp} />
       <div data-handle="1" className="corner-handle br" onPointerDown={onResizeDown('br')} onPointerMove={onPointerMove} onPointerUp={onPointerUp} />
 
-      <div data-handle="1" className="rotate-handle" onPointerDown={onRotateDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp}>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M14 4a7 7 0 1 0 .5 5" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M14 1v4h-4" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        </svg>
-      </div>
     </div>
   );
 }
@@ -323,88 +347,160 @@ export default function RabbitHoles() {
     [clampPanPair],
   );
 
-  const placeholderBody = (color: string) => (
-    <p className="text-[0.65rem] leading-relaxed" style={{ fontFamily: B, color }}>
-      PLACEHOLDER
-    </p>
-  );
-
   const cards: CardData[] = [
     {
       id: 'dying-languages', x: CARD_OX + 30, y: CARD_OY + 30, w: 260, rotate: -1.5,
       borderColor: 'var(--color-primary)', bg: 'var(--color-background, #fff)',
       anchor: 'tape-center', anchorColor: 'var(--color-accent)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'art-forgery', x: CARD_OX + 360, y: CARD_OY + 50, w: 180, rotate: 2.2,
-      borderColor: 'var(--color-secondary)', bg: 'var(--color-background, #fff)',
-      anchor: 'pin', anchorColor: 'var(--color-dark)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'quote-proust', x: CARD_OX + 610, y: CARD_OY + 30, w: 170, rotate: -0.8,
-      borderColor: 'var(--color-primary)', bg: 'var(--color-primary)',
-      anchor: 'tape-right', anchorColor: 'var(--color-light)',
-      children: placeholderBody('#fff'),
-    },
-    {
-      id: 'ethics-progress', x: CARD_OX + 50, y: CARD_OY + 300, w: 185, rotate: 1.2,
-      borderColor: 'var(--color-dark)', bg: 'var(--color-background, #fff)',
-      anchor: 'tape-left', anchorColor: 'var(--color-secondary)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'internet-geography', x: CARD_OX + 320, y: CARD_OY + 280, w: 280, rotate: -1,
-      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
-      anchor: 'pin', anchorColor: 'var(--color-accent)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'quote-einstein', x: CARD_OX + 690, y: CARD_OY + 290, w: 165, rotate: -2.2,
-      borderColor: 'var(--color-dark)', bg: 'var(--color-dark)',
-      anchor: 'pin', anchorColor: 'var(--color-secondary)',
-      children: placeholderBody('#fff'),
-    },
-    {
-      id: 'open-source', x: CARD_OX + 40, y: CARD_OY + 540, w: 185, rotate: 1.8,
-      borderColor: 'var(--color-secondary)', bg: 'var(--color-background, #fff)',
-      anchor: 'tape-both', anchorColor: 'var(--color-light)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'evolution-computing', x: CARD_OX + 310, y: CARD_OY + 560, w: 190, rotate: 0.6,
-      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
-      anchor: 'tape-center', anchorColor: 'var(--color-accent)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'sisyphus-note', x: CARD_OX + 580, y: CARD_OY + 530, w: 195, rotate: -1.4,
-      borderColor: 'var(--color-primary)', bg: 'var(--color-light)',
-      anchor: 'tape-left', anchorColor: 'var(--color-primary)',
-      children: placeholderBody('var(--color-foreground)'),
-    },
-    {
-      id: 'mythology', x: CARD_OX + 60, y: CARD_OY + 800, w: 280, rotate: 1.5,
-      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
-      anchor: 'tape-both', anchorColor: 'var(--color-accent)',
-      children: placeholderBody('var(--color-muted)'),
-    },
-    {
-      id: 'question-wisdom', x: CARD_OX + 440, y: CARD_OY + 820, w: 175, rotate: -0.5,
-      borderColor: 'var(--color-primary)', bg: 'var(--color-light)',
-      anchor: 'pin', anchorColor: 'var(--color-primary)',
       children: (
-        <p className="text-xs font-bold leading-snug" style={{ fontFamily: H, color: 'var(--color-primary)' }}>
-          PLACEHOLDER
-        </p>
+        <RhTopic
+          title="Endangered languages"
+          body="Each fading language carries metaphors and stories that rarely translate. Linguistic diversity is a map of how humans have thought in different keys."
+          titleColor="var(--color-primary)"
+          bodyColor="var(--color-muted)"
+        />
       ),
     },
     {
-      id: 'photography', x: CARD_OX + 680, y: CARD_OY + 790, w: 185, rotate: 1,
+      id: 'art-forgery', x: CARD_OX + 360, y: CARD_OY + 50, w: 200, rotate: 2.2,
+      borderColor: 'var(--color-secondary)', bg: 'var(--color-background, #fff)',
+      anchor: 'pin', anchorColor: 'var(--color-dark)',
+      children: (
+        <RhTopic
+          title="Art & forgery"
+          body="Pigment chemistry, X-ray, and provenance trails—how experts catch fakes, and why the market’s obsession with authenticity is its own story."
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'quote-proust', x: CARD_OX + 610, y: CARD_OY + 30, w: 188, rotate: -0.8,
+      borderColor: 'var(--color-primary)', bg: 'var(--color-primary)',
+      anchor: 'tape-right', anchorColor: 'var(--color-light)',
+      children: (
+        <RhQuote
+          quote="The real voyage of discovery consists not in seeking new landscapes, but in having new eyes."
+          attribution="Marcel Proust"
+          textColor="#fff"
+        />
+      ),
+    },
+    {
+      id: 'ethics-progress', x: CARD_OX + 50, y: CARD_OY + 300, w: 200, rotate: 1.2,
+      borderColor: 'var(--color-dark)', bg: 'var(--color-background, #fff)',
+      anchor: 'tape-left', anchorColor: 'var(--color-secondary)',
+      children: (
+        <RhTopic
+          title="Ethics of progress"
+          body="When does moving fast break things that matter? I keep returning to trade-offs between speed, care, and who gets heard."
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'internet-geography', x: CARD_OX + 320, y: CARD_OY + 280, w: 288, rotate: -1,
+      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
+      anchor: 'pin', anchorColor: 'var(--color-accent)',
+      children: (
+        <RhTopic
+          title="Internet geography"
+          body="Cables on seabeds, exchange points in cities—the net isn’t weightless. Physical maps of data still shape latency, power, and politics."
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'quote-einstein', x: CARD_OX + 690, y: CARD_OY + 290, w: 178, rotate: -2.2,
+      borderColor: 'var(--color-dark)', bg: 'var(--color-dark)',
+      anchor: 'pin', anchorColor: 'var(--color-secondary)',
+      children: (
+        <RhQuote
+          quote="The important thing is not to stop questioning. Curiosity has its own reason for existing."
+          attribution="Albert Einstein"
+          textColor="#fff"
+        />
+      ),
+    },
+    {
+      id: 'open-source', x: CARD_OX + 40, y: CARD_OY + 540, w: 198, rotate: 1.8,
+      borderColor: 'var(--color-secondary)', bg: 'var(--color-background, #fff)',
+      anchor: 'tape-both', anchorColor: 'var(--color-light)',
+      children: (
+        <RhTopic
+          title="Open source"
+          body="Communities maintaining code in public—governance, burnout, and the strange kindness of strangers reviewing your PRs."
+          titleColor="var(--color-secondary)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'evolution-computing', x: CARD_OX + 310, y: CARD_OY + 560, w: 205, rotate: 0.6,
+      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
+      anchor: 'tape-center', anchorColor: 'var(--color-accent)',
+      children: (
+        <RhTopic
+          title="Evolution × computing"
+          body="Genetic algorithms, neural scaling, and biological inspiration—when should systems imitate life, and when is that a distraction?"
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'sisyphus-note', x: CARD_OX + 580, y: CARD_OY + 530, w: 210, rotate: -1.4,
+      borderColor: 'var(--color-primary)', bg: 'var(--color-light)',
+      anchor: 'tape-left', anchorColor: 'var(--color-primary)',
+      children: (
+        <RhTopic
+          title="Sisyphus, happily"
+          body="Camus on the myth: the struggle itself is enough to fill a heart. A useful counterweight to hustle culture and infinite optimization."
+          titleColor="var(--color-primary)"
+          bodyColor="var(--color-foreground, #1a1a1a)"
+        />
+      ),
+    },
+    {
+      id: 'mythology', x: CARD_OX + 60, y: CARD_OY + 800, w: 288, rotate: 1.5,
+      borderColor: 'var(--color-accent)', bg: 'var(--color-background, #fff)',
+      anchor: 'tape-both', anchorColor: 'var(--color-accent)',
+      children: (
+        <RhTopic
+          title="Myth across cultures"
+          body="Same narrative shapes, different names—creation, tricksters, floods. Comparative myth is a back door into how groups encode values."
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
+    },
+    {
+      id: 'question-wisdom', x: CARD_OX + 440, y: CARD_OY + 820, w: 195, rotate: -0.5,
+      borderColor: 'var(--color-primary)', bg: 'var(--color-light)',
+      anchor: 'pin', anchorColor: 'var(--color-primary)',
+      children: (
+        <RhTopic
+          title="What is wisdom now?"
+          body="With endless information and shallow certainty, what would it mean to be wise—not just well-read?"
+          titleColor="var(--color-primary)"
+          bodyColor="var(--color-foreground, #1a1a1a)"
+        />
+      ),
+    },
+    {
+      id: 'photography', x: CARD_OX + 680, y: CARD_OY + 790, w: 198, rotate: 1,
       borderColor: 'var(--color-dark)', bg: 'var(--color-background, #fff)',
       anchor: 'tape-center', anchorColor: 'var(--color-accent)',
-      children: placeholderBody('var(--color-muted)'),
+      children: (
+        <RhTopic
+          title="Light & frame"
+          body="Photography as editing reality in milliseconds—what you exclude is as loud as what you include."
+          titleColor="var(--color-dark)"
+          bodyColor="var(--color-muted)"
+        />
+      ),
     },
   ];
 
@@ -420,9 +516,7 @@ export default function RabbitHoles() {
             rabbit holes
           </h1>
           <p className="text-sm leading-relaxed w-full mb-3" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
-            rabbit holes!!{' '}
-            <kbd className="px-1 py-0.5 rounded border border-[var(--color-border)] text-[0.7rem]">Ctrl</kbd>{' '}
-            + .
+            art, topics, and quotes I&apos;ve found interesting
           </p>
         </div>
 
@@ -476,7 +570,7 @@ export default function RabbitHoles() {
             <button
               type="button"
               className="px-1.5 py-1 ml-0.5 rounded text-[0.65rem] hover:opacity-80"
-              aria-label="Reset zoom"
+              aria-label="Reset"
               onPointerDown={(e) => e.stopPropagation()}
               onClick={(e) => {
                 e.stopPropagation();
@@ -491,10 +585,11 @@ export default function RabbitHoles() {
                 }
               }}
             >
-              100%
+              Reset
             </button>
           </div>
           <div
+            className="rh-cork-canvas"
             style={{
               position: 'relative',
               width: CANVAS_W,

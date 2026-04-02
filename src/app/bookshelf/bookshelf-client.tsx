@@ -46,8 +46,11 @@ export default function BookshelfClient({ books }: BookshelfClientProps) {
     );
   });
 
+  const isSearching = searchQuery.trim().length > 0;
   const placeholderCount =
-    filteredBooks.length > 0 && filteredBooks.length % columnCount !== 0
+    !isSearching &&
+    filteredBooks.length > 0 &&
+    filteredBooks.length % columnCount !== 0
       ? columnCount - (filteredBooks.length % columnCount)
       : 0;
 
@@ -197,7 +200,7 @@ export default function BookshelfClient({ books }: BookshelfClientProps) {
               onClick={() => handleBookClick(book)}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="cursor-pointer group"
+              className="cursor-pointer group flex flex-col items-center"
               style={{
                 transition: "transform 0.12s ease",
                 transformStyle: "preserve-3d",
@@ -205,7 +208,7 @@ export default function BookshelfClient({ books }: BookshelfClientProps) {
               }}
             >
               <div
-                className="relative overflow-hidden rounded shadow-md mb-2.5 group-hover:shadow-xl transition-shadow"
+                className="relative overflow-hidden rounded shadow-md mb-2 group-hover:shadow-xl transition-shadow w-full"
                 style={{ aspectRatio: "2/3" }}
               >
                 {book.imageSrc ? (
@@ -234,7 +237,18 @@ export default function BookshelfClient({ books }: BookshelfClientProps) {
                 )}
               </div>
 
-              <BookStarRating rating={book.rating} size="card" className="mb-1" />
+              {book.author ? (
+                <p
+                  className="w-full text-center text-[0.65rem] leading-tight mb-1 px-1"
+                  style={{
+                    fontFamily: "Sora, system-ui, sans-serif",
+                    color: "var(--color-muted)",
+                  }}
+                >
+                  {book.author}
+                </p>
+              ) : null}
+              <BookStarRating rating={book.rating} size="card" className="w-full justify-center mb-1" />
             </div>
           ))}
           {Array.from({ length: placeholderCount }).map((_, i) => (

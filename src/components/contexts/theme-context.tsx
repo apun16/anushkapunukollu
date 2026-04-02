@@ -102,10 +102,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("mediterranean")
-  const [mounted, setMounted] = useState(false)
-  
   useEffect(() => {
-    setMounted(true)
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("theme") as Theme
       if (saved && themes[saved]) {

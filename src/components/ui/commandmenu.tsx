@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import {
   Home,
@@ -60,7 +61,7 @@ export function CommandMenu() {
             break
           case "P":
             e.preventDefault()
-            router.push("/portfolio")
+            router.push("/work")
             setOpen(false)
             break
           case "B":
@@ -123,9 +124,11 @@ export function CommandMenu() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <div className="flex items-center border-b py-3 pl-4 pr-3">
           <div className="relative mr-2.5 flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden" aria-hidden>
-            <img
+            <Image
               src="/profile.jpg"
               alt="Profile"
+              width={20}
+              height={20}
               className="h-5 w-5 object-cover"
               onError={(e) => {
                 e.currentTarget.style.display = "none"
@@ -152,9 +155,9 @@ export function CommandMenu() {
               <span>Home</span>
               <CommandShortcut>{shiftPressed ? 'H' : 'Shift+H'}</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => { router.push("/portfolio"); setOpen(false); })}>
+            <CommandItem onSelect={() => runCommand(() => { router.push("/work"); setOpen(false); })}>
               <Briefcase className="mr-2 h-4 w-4" />
-              <span>Portfolio</span>
+              <span>Work</span>
               <CommandShortcut>{shiftPressed ? 'P' : 'Shift+P'}</CommandShortcut>
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => { router.push("/bookshelf"); setOpen(false); })}>
