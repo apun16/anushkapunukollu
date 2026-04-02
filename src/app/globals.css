@@ -60,6 +60,65 @@ body {
   left: 0;
 }
 
+.profile-link-tape {
+  position: relative;
+  z-index: 0;
+  color: inherit;
+  padding: 0 0.12em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.profile-link-tape[data-tape='accent'] {
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-accent, #feb737) 48%, transparent),
+    color-mix(in srgb, var(--color-accent, #feb737) 32%, transparent)
+  );
+}
+
+.profile-link-tape[data-tape='secondary'] {
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-secondary, #7cb8c0) 52%, transparent),
+    color-mix(in srgb, var(--color-secondary, #7cb8c0) 34%, transparent)
+  );
+}
+
+.profile-link-tape[data-tape='primary'] {
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-primary, #543787) 46%, transparent),
+    color-mix(in srgb, var(--color-primary, #543787) 30%, transparent)
+  );
+}
+
+.profile-link-tape[data-tape='light'] {
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-light, #d4e0f0) 55%, transparent),
+    color-mix(in srgb, var(--color-light, #d4e0f0) 38%, transparent)
+  );
+}
+
+.profile-link-tape:hover {
+  background-size: 100% 100%;
+}
+
+.profile-link-tape:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .command-dialog-content {
   position: fixed !important;
   inset: 0 !important;

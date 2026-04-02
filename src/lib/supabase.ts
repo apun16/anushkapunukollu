@@ -5,6 +5,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 
 function getClient(): SupabaseClient {
   if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('[supabase] NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY not set — using placeholder client (no data will be returned)');
     return createClient('https://placeholder.supabase.co', 'placeholder');
   }
   return createClient(supabaseUrl, supabaseAnonKey);

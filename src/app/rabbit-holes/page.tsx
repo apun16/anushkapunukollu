@@ -530,7 +530,7 @@ export default function RabbitHoles() {
           onPointerLeave={onBgUp}
         >
           <div
-            className="rh-zoom-ui absolute top-2 right-2 z-50 flex items-center gap-1 rounded-md border px-1 py-0.5 text-xs"
+            className="rh-zoom-ui absolute top-2 left-2 z-50 flex items-center gap-1 rounded-md border px-1 py-0.5 text-xs"
             style={{
               fontFamily: B,
               backgroundColor: 'var(--color-background, #fff)',

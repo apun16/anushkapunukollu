@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState, type CSSProperties } from 'react';
 import Image from 'next/image';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
@@ -43,6 +43,33 @@ function GitHubIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
+function projectDescriptionPlainText(description: string): string {
+  return description.replace(/\*\*(.+?)\*\*/g, '$1');
+}
+
+function ProjectDescription({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const m = /^\*\*(.+)\*\*$/.exec(part);
+        if (m) {
+          return (
+            <strong
+              key={i}
+              className="font-semibold"
+              style={{ color: 'var(--color-dark)' }}
+            >
+              {m[1]}
+            </strong>
+          );
+        }
+        return <Fragment key={i}>{part}</Fragment>;
+      })}
+    </>
+  );
+}
+
 interface Project {
   id: number;
   title: string;
@@ -57,80 +84,61 @@ interface Project {
 const sampleProjects: Project[] = [
   {
     id: 1,
+    title: 'Dextera',
+    description:
+      'Dextera is an iOS app that uses computer vision and audio processing to detect hand gestures and trigger piano notes in real time, allowing users with limited mobility to play without precise touch input. **Winner of Apple\'s Swift Student Challenge 2026!!**',
+    languages: ['Swift', 'AVFoundation', 'AVAudioEngine', 'Vision', 'Swift Charts'],
+    imageSrc: '/projects/Dextera.png',
+    githubUrl: 'https://github.com/apun16/Dextera',
+    liveUrl: 'https://www.wwdcscholars.com/s/228CEB5B-30BA-417A-97D0-5EBB44050B28/2026',
+  },
+  {
+    id: 2,
     title: '6° Degrees',
     description:
-      '6° Degrees is a semantic word connection game where players find paths between any two words in six steps or less. Reached 100+ players and 500+ plays.',
+      '6° Degrees is a semantic word connection game where players find optimal paths between any two words in six steps or less. **Reached 2,000+ players in 20+ countries.**',
     languages: ['Sentence Transformers', 'PyTorch', 'Python', 'TypeScript', 'React', 'Docker', 'Jest', 'pytest'],
     imageSrc: '/projects/6Degrees.png',
     githubUrl: 'https://github.com/apun16/6-Degrees/',
     liveUrl: 'https://www.play6degrees.com/',
   },
   {
-    id: 2,
+    id: 3,
     title: 'LandLock',
     description:
-      'LandLock is an AI-powered land risk intelligence platform that helps people make informed decisions about where to live, build, and insure. Built in 36 hours for UofT Hacks.',
+      'LandLock is a **multi-agent land risk assessment platform** that helps people make informed decisions about where to live, build, and insure. Built in 36 hours for UofT Hacks.',
     languages: ['Python', 'FastAPI', 'LangGraph', 'CrewAI', 'Leaflet.js', 'TypeScript', 'React', 'BeautifulSoup'],
     imageSrc: '/projects/LandLock.png',
     githubUrl: 'https://github.com/apun16/landlock',
     liveUrl: 'https://devpost.com/software/landlock',
   },
   {
-    id: 3,
+    id: 4,
+    title: 'SucroSoil',
+    description:
+      'SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios; **secured $40K+ funding from Emergent Ventures, 1517 Fund and others** to support R&D.',
+    languages: ['Material Science', 'Hydrogels', 'Python', 'scikit-learn'],
+    imageSrc: '/projects/SucroSoil_Thumbnail.png',
+    liveUrl: 'https://devpost.com/software/sucrosoil',
+  },
+  {
+    id: 5,
     title: 'Go Neural Network',
     description:
-      'A full Go-playing AI integrating a dual-head CNN with residual blocks and Monte Carlo Tree Search (MCTS), inspired by AlphaGo. Includes a complete Go engine, including ko rule and capture detection, and a CLI for playing against the trained AI.',
+      'A Go-playing AI integrating a **dual-head CNN with residual blocks** and **Monte Carlo Tree Search (MCTS)**, inspired by AlphaGo. Includes ko rule, capture detection, and a CLI to play the model.',
     languages: ['Python', 'PyTorch', 'NumPy', 'Monte Carlo Tree Search'],
     imageSrc: '/projects/GoNeuralNetwork.png',
     githubUrl: 'https://github.com/apun16/Go-Neural-Network',
   },
   {
-    id: 4,
+    id: 6,
     title: 'FakeSeek',
     description:
-      'A deepfake detection tool that helps users spot AI-generated content and find if their identity has been compromised via image analysis and web scraping. Built in 36 hours at TechNova 2025 & placed 3rd overall.',
-    languages: ['TypeScript', 'Python', 'GeminiAPI', 'React', 'MongoDB', 'TailwindCSS', 'BeautifulSoup', 'Auth0'],
+      'A deepfake detection tool that helps users find if their identity has been compromised via image analysis and web scraping. Built in 36 hours at **TechNova 2025 & placed 3rd overall.**',
+    languages: ['Python', 'TypeScript', 'Auth0', 'MongoDB', 'BeautifulSoup'],
     imageSrc: '/projects/fakeseek_logo.png',
     githubUrl: 'https://github.com/apun16/FakeSeek.',
     liveUrl: 'https://devpost.com/software/fakeseek',
-  },
-  {
-    id: 5,
-    title: 'SucroSoil',
-    description:
-      'SucroSoil synthesizes biodegradable hydrogels from sugarcane bagasse to improve soil health. Using Bayesian regression to model compound ratios which achieved a 0.62 R² score; secured $30K+ funding from Emergent Ventures, 1517 Fund and other firms to support R&D.',
-    languages: ['Material Science', 'Hydrogels', 'Python', 'scikit-learn', 'Financial Modeling'],
-    imageSrc: '/projects/SucroSoil_Thumbnail.png',
-    liveUrl: 'https://devpost.com/software/sucrosoil',
-  },
-  {
-    id: 6,
-    title: 'ConnectED',
-    description:
-      'ConnectED is a platform that helps FGLI (First-Generation Low-Income) students access higher education resources. Designed a Tinder-style scholarship feed with personalized recommendations in Figma, a financial aid calculator, and a mentor matching system using NLP.',
-    languages: ['Python', 'Figma', 'UI/UX Design', 'NLTK', 'Scrapy', 'Google APIs'],
-    imageSrc: '/projects/ConnectED.png',
-    githubUrl: 'https://github.com/aravM23/ConnectED',
-    liveUrl: 'https://devpost.com/software/connected-ie5ghl',
-  },
-  {
-    id: 7,
-    title: 'Flux',
-    description:
-      'Flux is an autonomous drone system designed to detect methane leaks from abandoned oil wells. Equipped with methane sensors, infrared cameras, GPS, and LiDAR, each drone scans remote areas and uses ML to analyze leaks to prioritize high-risk wells based on location, age, and nearby emissions. Placed Top 7 @ Moonshot Pirates Climate Challenge.',
-    languages: ['Python', 'Drones', 'LiDAR', 'Machine Learning'],
-    imageSrc: '/projects/Flux.png',
-    liveUrl: 'https://app.moonshotpirates.com/vote/flux-1',
-  },
-  {
-    id: 8,
-    title: 'SeaBloom',
-    description:
-      'SeaBloom is a coral reef monitoring system that uses CNNs to classify bleached vs unbleached coral from images with 98% accuracy. The model uses PyTorch and image transformations (ex: grayscale conversion, colour jittering, resizing) to improve the training process. Placed Top 10 @ NFTE World Series of Innovation BMO Challenge.',
-    languages: ['Python', 'PyTorch', 'Computer Vision', 'Figma'],
-    imageSrc: '/projects/SeaBloom.png',
-    githubUrl: 'https://github.com/apun16/SeaBloom',
-    liveUrl: 'https://medium.com/@anushkapun/seabloom-fab26eec2aea',
   },
 ];
 
@@ -357,7 +365,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <p className="text-sm leading-relaxed flex-1" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
-        {project.description}
+        <ProjectDescription text={project.description} />
       </p>
     </article>
   );
@@ -371,7 +379,7 @@ export default function WorkPage() {
   const filteredProjects = sampleProjects.filter(
     (project) =>
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      projectDescriptionPlainText(project.description).toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.languages.some((lang) => lang.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
@@ -403,7 +411,8 @@ export default function WorkPage() {
                 backgroundColor: 'var(--color-background)',
                 color: 'var(--color-foreground)',
                 fontFamily: B,
-              }}
+                '--tw-ring-color': 'color-mix(in srgb, var(--color-primary) 55%, transparent)',
+              } as CSSProperties}
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style={{ color: 'var(--color-muted)' }}>
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -491,18 +500,6 @@ export default function WorkPage() {
                         </span>
                       ))}
                     </div>
-                    <a
-                      href={exp.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-2.5 text-xs font-medium transition-colors"
-                      style={{ fontFamily: B, color: 'var(--color-primary)' }}
-                    >
-                      Website
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
                   </div>
                 </li>
               ))}

@@ -4,7 +4,7 @@ export default function Footer() {
 
   const links = [
     {
-      href: "https://linkedin.com/in/anushkapunukollu",
+      href: "https://linkedin.com/in/apunukollu",
       label: "LinkedIn",
       icon: (
         <svg className="w-5 h-5 shrink-0 text-[var(--color-foreground)]" fill="currentColor" viewBox="0 0 24 24">

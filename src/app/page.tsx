@@ -10,7 +10,7 @@ const currentExperiences = [
     color: "var(--color-accent)",
     content: (
       <>
-        Computer Science @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
+        Computer Science @ <a href="https://uwaterloo.ca" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="accent">University of Waterloo</a> as a Ted Rogers Future Leader Scholar
       </>
     )
   },
@@ -19,7 +19,7 @@ const currentExperiences = [
     color: "var(--color-secondary)",
     content: (
       <>
-        spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">competitive programming</a> + going down rabbit holes about random ideas at 3AM
+        spending time <a href="https://devpost.com/anushka16" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="secondary">hacking</a> + <a href="https://cemc.uwaterloo.ca/sites/default/files/documents/2025/ciw_summary.pdf" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="secondary">competitive programming</a> + going down rabbit holes about random ideas at 3AM
       </>
     )
   }
@@ -31,7 +31,7 @@ const pastExperiences = [
     color: "var(--color-accent)",
     content: (
       <>
-        developed tools that distribute multilingual content for some of my favourite creators @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Aview International</a>
+        developed tools that distribute multilingual content for some of my favourite creators @ <a href="https://www.aviewint.com/" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="accent">Aview International</a>
       </>
     )
   },
@@ -40,7 +40,7 @@ const pastExperiences = [
     color: "var(--color-accent)",
     content: (
       <>
-        was a future tech intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Nokia</a> on their NSP Analytics team
+        was a future tech intern @ <a href="https://www.nokia.com/" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="accent">Nokia</a> on their NSP Analytics team
       </>
     )
   },
@@ -49,7 +49,7 @@ const pastExperiences = [
     color: "var(--color-primary)",
     content: (
       <>
-        built a biodegradable hydrogel using sugarcane bagasse to help revitalize degraded soil; created to find an alternative to chemical fertilizers <a href="https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">[backed by Emergent Ventures]</a>.
+        built a biodegradable hydrogel using sugarcane bagasse to help revitalize degraded soil; created to find an alternative to chemical fertilizers <a href="https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="primary">[backed by Emergent Ventures]</a>.
       </>
     )
   },
@@ -58,7 +58,7 @@ const pastExperiences = [
     color: "var(--color-secondary)",
     content: (
       <>
-        led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Target Alpha</a>. collectively reached 10,000 high school students & partnered with TD, Binance, + more!
+        led 2 national financial literacy non-profits: <a href="http://fusesociety.ca/" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="secondary">the FUSE Society</a> & <a href="https://targetalpha.ca/" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="secondary">Target Alpha</a>. collectively reached 10,000 high school students & partnered with TD, Binance, + more!
       </>
     )
   },
@@ -67,7 +67,7 @@ const pastExperiences = [
     color: "var(--color-light)",
     content: (
       <>
-        photographed objects in daily life + awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-6 hover:bg-[var(--color-light)] transition-all duration-300 rounded-sm highlight-reveal">Scholastic Art & Writing Awards</a>
+        photographed objects in daily life + awarded by the <a href="https://www.artandwriting.org/" target="_blank" rel="noopener noreferrer" className="profile-link-tape" data-tape="light">Scholastic Art & Writing Awards</a>
       </>
     )
   }
@@ -93,7 +93,7 @@ export default function Home() {
             className="text-sm leading-relaxed w-full mb-3"
             style={{ fontFamily: B, color: "var(--color-muted)" }}
           >
-            Student at UWaterloo exploring the intersection of finance, product, and tech. I focus on using technology to make information, tools, and systems more accessible.
+            Student at UWaterloo exploring the intersection of finance, product, and infra. I focus on using technology to make information, tools, and systems more accessible.
           </p>
         </div>
         <div className="mb-8">
