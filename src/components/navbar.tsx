@@ -1,14 +1,13 @@
 "use client"
 
 import Link from "next/link";
+import { Rabbit } from "lucide-react";
 import { CommandMenu } from "./ui/commandmenu";
 import { useTheme } from "./contexts/theme-context";
 
 interface NavbarProps {
   currentPage?: string;
 }
-
-import { Rabbit } from "lucide-react";
 
 export default function Navbar({ currentPage }: NavbarProps) {
   useTheme();
@@ -31,15 +30,15 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
           <div className="flex items-center gap-6 sm:gap-8 min-w-0">
             <Link 
-              href="/portfolio" 
+              href="/work" 
               className={`transition-all duration-200 whitespace-nowrap text-base sm:text-lg md:text-xl lg:text-[1.5rem] border-b-2 pb-0.5 ${
-                currentPage === 'portfolio' 
+                currentPage === 'work' 
                   ? 'border-[var(--color-primary)] text-[var(--color-primary)]' 
                   : 'border-transparent text-[var(--color-foreground)] hover:text-[var(--color-light)]'
               }`}
               style={{ fontFamily: 'Satoshi-Regular, Satoshi-Variable, system-ui, sans-serif' }}
             >
-              portfolio
+              work
             </Link>
             <Link 
               href="/bookshelf" 

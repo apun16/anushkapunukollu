@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={spaceGrotesk.className}>
-      <body className="antialiased">
+    <html lang="en" className={spaceGrotesk.className} suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>

@@ -69,7 +69,7 @@ export default function Book3DRender({ book, className = '' }: Book3DRenderProps
           style={{
             width: `${spineWidth}px`,
             height: `${bookHeight}px`,
-            backgroundColor: '#2d2d2d',
+            backgroundColor: book.spineColor ?? '#2d2d2d',
             color: '#ffffff',
             transformOrigin: 'right center',
             transform: 'translate3d(0, 0, 0) rotateY(-60deg)',
@@ -159,7 +159,6 @@ export default function Book3DRender({ book, className = '' }: Book3DRenderProps
               height: '100%',
               objectFit: 'cover',
             }}
-            unoptimized
           />
         </div>
         <div
