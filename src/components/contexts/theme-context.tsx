@@ -27,7 +27,7 @@ const themes: Record<Theme, ThemeColors> = {
     background: " #fefefeff",
     backgroundLight: " #FFFFFF",
     foreground: " #2C5282",
-    muted: " #D97BA6",
+    muted: " #5B6F8A",
     border: " #E8DFD0",
   },
   nyc: {
