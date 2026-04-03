@@ -227,32 +227,123 @@ const recognitionCategories: { id: RecognitionCategoryId; label: string; dotColo
 
 const recognitionItems: RecognitionItem[] = [
   {
+    id: 'egoi',
+    category: 'stem',
+    title: 'EGOI National Training Camp Qualifier',
+    summary: 'Top 10 female competitive programmers out of 5,000+ participants',
+    detail: 'Invitational camp based on Canadian Computing Contest scores',
+  },
+  {
+    id: 'usaco',
+    category: 'stem',
+    title: 'USACO Gold Division',
+    summary: 'Scored 1000/1000 in Bronze & Silver divisions',
+    detail: 'Silver Rank: 1/4656, Bronze Rank: 1/11472',
+  },
+  {
+    id: 'euclid math',
+    category: 'stem',
+    title: 'Euclid Math Contest Honour Roll',
+    summary: 'Top ~500 in the country out of 20,000+ participants',
+    detail: '',
+  },
+  {
+    id: 'ingenious',
+    category: 'stem',
+    title: 'Ingenious+ Innovation Competition - Ontario Winner',
+    summary: 'Recognized for work with SucroSoil and ConnectED.',
+    detail: '',
+  },
+  {
+    id: 'youth impact',
+    category: 'stem',
+    title: 'Youth Impact Challenge - National Winner',
+    summary: 'Placed top 3 out of 200+ participants.',
+    detail: 'Awarded for Oasis, a low-cost atmospheric water harvesting device for rural SubSaharan Africa.',
+  },
+  {
+    id: 'Moonshot',
+    category: 'stem',
+    title: 'Moonshot Pirates Climate Challenge - Top 7',
+    summary: 'Placed top 7 out of 3500+ participants',
+    detail: 'Awarded for Flux, an autonomous drone system designed to detect methane leaks from abandoned oil wells.',
+  },
+  {
+    id: 'NFTE World Series',
+    category: 'stem',
+    title: 'NFTE World Series of Innovation Finalist',
+    summary: 'Top 10 in the BMO Biodiversity Challenge out of 1,800+ projects',
+    detail: 'Awarded for SeaBloom, a coral reef monitoring system that uses CNNs to classify bleached vs unbleached coral with 98% accuracy.',
+  },
+  {
+    id: 'IAAC',
+    category: 'stem',
+    title: 'International Astrophysics and Astronomy Contest - Silver Medal',
+    summary: 'Top 400 out of ~4500 participants',
+    detail: 'Competed in topics covering theory of relativity, cosmology, observational astronomy, and parallax/angular size.',
+  },
+  {
     id: 'loran',
     category: 'scholarships',
     title: 'Loran Scholar Finalist',
-    summary: '1 of 90 finalists out of 6,000+ applicants',
-    detail: 'Recognized for demonstrated commitment to character, service, and leadership',
+    summary: '1 of 90 finalists out of 6,000+ applicants nationwide',
+    detail: 'Recognized for demonstrated commitment to character, service, and leadership.',
+  },
+  {
+    id: 'ted rogers',
+    category: 'scholarships',
+    title: 'Ted Rogers Future Leader Scholar',
+    summary: '1 of 20 awarded $26,800 out of all Waterloo first years',
+    detail: 'Recognized for academic excellence and community leadership.',
   },
   {
     id: 'bmo',
     category: 'scholarships',
     title: 'BMO200 William A. Downe Scholar',
-    summary: 'Awarded in recognition of exceptional performance',
-    detail: 'Excellence in academic achievement, leadership, and community contributions',
+    summary: 'Awarded $10,000 in recognition of excellence in academic achievement, leadership, and community contributions.',
+    detail: '',
   },
   {
-    id: 'egoi',
-    category: 'stem',
-    title: 'EGOI National Training Camp Qualifier',
-    summary: 'Top 10 female competitive programmers out of 4,000+ participants',
-    detail: 'Invitational camp based on Canadian Computing Contest scores',
+    id: 'blue jays',
+    category: 'scholarships',
+    title: 'Jays Care Scholar',
+    summary: 'Recieved in recognition of promising academic performance and future potential.',
+    detail: '',
   },
   {
     id: 'deca',
     category: 'business',
-    title: 'DECA ICDC — 7th place internationally',
+    title: 'DECA ICDC 7th place - Business Finance Series',
     summary: 'Placed 7th internationally out of 10,000+ total competitors',
-    detail: 'Business Finance Series event',
+    detail: 'Business Finance Series event covering financial analysis, investment strategies, and corporate finance concepts.',
+  },
+  {
+    id: 'fbla',
+    category: 'business',
+    title: 'FBLA National Champion - Securities & Investments',
+    summary: '1st nationally out of hundreds of competitors',
+    detail: 'Competition covered bonds, portfolio management, and investment regulations.',
+  },
+  {
+    id: 'waterloo flc',
+    category: 'business',
+    title: 'Waterloo Financial Literacy Contest - 1st Overall',
+    summary: 'Placed 1st nationally out of 1,000+ students',
+    detail: 'Covered personal finance, investing principles, credit, and long-term wealth management.',
+  },
+  {
+    id: 'apple',
+    category: 'design',
+    title: 'Apple Swift Student Challenge Winner',
+    summary: 'Top 350 students out of thousands of participants',
+    detail: 'Awarded for Dextera, an iOS app that uses computer vision and hand-tracking to help people with limited mobility play the music they love.',
+  },
+  {
+    id: 'scholastic art',
+    category: 'design',
+    title: 'Scholastic Art & Writing Awards - Honourable Mention',
+    summary: 'Awarded for photography category',
+    detail: 'Work included work exploring still life compositions and portraiture.',
   },
 ];
 
@@ -507,7 +598,7 @@ export default function WorkPage() {
           )}
         </section>
 
-        <SectionTitle label="Awards & recognition" className="mb-4" />
+        <SectionTitle label="awards & recognition" className="mb-4" />
 
         <div
           className="flex flex-wrap items-baseline gap-x-6 gap-y-2 mb-5 sm:mb-6"
