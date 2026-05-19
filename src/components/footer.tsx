@@ -1,3 +1,5 @@
+import { RESUME_REQUEST_MAILTO } from '@/lib/resume-request-mailto';
+
 export default function Footer() {
   const labelClass =
     "inline-block max-w-0 overflow-hidden whitespace-nowrap opacity-0 -translate-x-1 transition-[max-width,opacity,transform] duration-1000 ease-[cubic-bezier(0.1,0,0.1,1)] group-hover:max-w-[100px] group-hover:opacity-100 group-hover:translate-x-0";
@@ -22,7 +24,7 @@ export default function Footer() {
       ),
     },
     {
-      href: "/resume.pdf",
+      href: RESUME_REQUEST_MAILTO,
       label: "Resume",
       icon: (
         <svg className="w-5 h-5 shrink-0 text-[var(--color-foreground)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,8 +44,9 @@ export default function Footer() {
           <a
             key={link.label}
             href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(link.href.startsWith('mailto:')
+              ? {}
+              : { target: '_blank', rel: 'noopener noreferrer' })}
             aria-label={link.label}
             className="group inline-flex items-center gap-1.5"
           >

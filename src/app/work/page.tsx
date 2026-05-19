@@ -151,9 +151,11 @@ type ExperienceItem = {
   logoAlt: string;
   title: string;
   org: string;
-  body: string;
+  /** Omit or leave empty to hide the description block. */
+  body?: string;
   tags: string[];
-  href: string;
+  /** Omit or leave empty when there is no org link. */
+  href?: string;
 };
 
 const experienceCategories: { id: ExperienceCategoryId; label: string; accentBar: string }[] = [
@@ -162,6 +164,17 @@ const experienceCategories: { id: ExperienceCategoryId; label: string; accentBar
 ];
 
 const experienceItems: ExperienceItem[] = [
+  {
+    id: 'freedom-mobile',
+    category: 'professional',
+    logo: '/work/FreedomMobile_logo.png',
+    logoAlt: 'Freedom Mobile',
+    title: 'Software Engineering Intern',
+    org: 'Freedom Mobile',
+    body: 'Migrated billing systems processing millions of transactions to AWS microservices, built global vendor hardware ETL pipelines, and developed a RAG-based automated project reporting platform for 15+ teams to streamline intern onboarding.',
+    tags: ['AWS', 'TypeScript', 'Python', 'Java', 'LangChain', 'React Native'],
+    href: 'https://www.freedommobile.ca/',
+  },
   {
     id: 'aview',
     category: 'professional',
@@ -183,6 +196,15 @@ const experienceItems: ExperienceItem[] = [
     body: "Worked on the Network Service Platform's Analytics team (Future Tech Program), migrating 10,000+ lines of legacy front-end code across 120+ files to improve load times and reduce bug reports.",
     tags: ['TypeScript', 'JavaScript', 'React', 'State Management', 'Jira', 'Confluence'],
     href: 'https://www.nokia.com/',
+  },
+  {
+    id: 'wpc',
+    category: 'extracurricular',
+    logo: '/work/WPC_logo.jpeg',
+    logoAlt: ' Waterloo Private Capital',
+    title: 'Investment Analyst',
+    org: 'Waterloo Private Capital',
+    tags: ['Comparable Analysis', 'Financial Analysis', 'DCF', 'Due Diligence'],
   },
   {
     id: 'fuse',
@@ -568,13 +590,27 @@ export default function WorkPage() {
                       <h3 className="text-base font-bold leading-tight" style={{ fontFamily: H, color: 'var(--color-dark)' }}>
                         {exp.title}
                       </h3>
-                      <span className="text-sm leading-relaxed" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
-                        {exp.org}
-                      </span>
+                      {exp.href?.trim() ? (
+                        <a
+                          href={exp.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm leading-relaxed underline-offset-2 hover:underline"
+                          style={{ fontFamily: B, color: 'var(--color-muted)' }}
+                        >
+                          {exp.org}
+                        </a>
+                      ) : (
+                        <span className="text-sm leading-relaxed" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
+                          {exp.org}
+                        </span>
+                      )}
                     </div>
-                    <p className="text-sm leading-relaxed mt-1.5" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
-                      {exp.body}
-                    </p>
+                    {exp.body?.trim() ? (
+                      <p className="text-sm leading-relaxed mt-1.5" style={{ fontFamily: B, color: 'var(--color-muted)' }}>
+                        {exp.body}
+                      </p>
+                    ) : null}
                     <div className="flex flex-wrap gap-1.5 mt-2">
                       {exp.tags.map((tag) => (
                         <span

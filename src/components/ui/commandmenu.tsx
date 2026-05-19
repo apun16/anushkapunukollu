@@ -26,6 +26,7 @@ import {
   CommandShortcut,
 } from "./command"
 import { useTheme, type Theme } from "../contexts/theme-context"
+import { RESUME_REQUEST_MAILTO } from "@/lib/resume-request-mailto"
 
 const themeConfig: Record<Theme, { label: string; emoji: string; bgColor: string; number: string }> = {
   mediterranean: { label: "Mediterranean", emoji: "🌊", bgColor: "#E8E3F0", number: "1" },
@@ -181,7 +182,7 @@ export function CommandMenu() {
               <Github className="mr-2 h-4 w-4" />
               <span>GitHub</span>
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => { window.open("/resume.pdf", "_blank"); setOpen(false); })}>
+            <CommandItem onSelect={() => runCommand(() => { window.location.href = RESUME_REQUEST_MAILTO; setOpen(false); })}>
               <FileText className="mr-2 h-4 w-4" />
               <span>Resume</span>
             </CommandItem>
