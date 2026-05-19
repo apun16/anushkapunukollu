@@ -509,38 +509,6 @@ export default function WorkPage() {
       <main className="max-w-5xl mx-auto px-6 py-8">
         <Navbar currentPage="work" />
 
-        <SectionTitle label="Projects" />
-
-        <div className="mb-6">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search languages, projects, etc..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pl-10 border rounded-none focus:outline-none focus:ring-2 focus:border-transparent"
-              style={{
-                borderColor: 'var(--color-border)',
-                backgroundColor: 'var(--color-background)',
-                color: 'var(--color-foreground)',
-                fontFamily: B,
-                '--tw-ring-color': 'color-mix(in srgb, var(--color-primary) 55%, transparent)',
-              } as CSSProperties}
-            />
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style={{ color: 'var(--color-muted)' }}>
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7 sm:mb-8">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-
         <SectionTitle label="Experience" className="mb-4" />
 
         <div
@@ -633,6 +601,38 @@ export default function WorkPage() {
             </ul>
           )}
         </section>
+
+        <SectionTitle label="Projects" />
+
+        <div className="mb-6">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search languages, projects, etc..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 pl-10 border rounded-none focus:outline-none focus:ring-2 focus:border-transparent"
+              style={{
+                borderColor: 'var(--color-border)',
+                backgroundColor: 'var(--color-background)',
+                color: 'var(--color-foreground)',
+                fontFamily: B,
+                '--tw-ring-color': 'color-mix(in srgb, var(--color-primary) 55%, transparent)',
+              } as CSSProperties}
+            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style={{ color: 'var(--color-muted)' }}>
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-7 sm:mb-8">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
 
         <SectionTitle label="awards & recognition" className="mb-4" />
 
